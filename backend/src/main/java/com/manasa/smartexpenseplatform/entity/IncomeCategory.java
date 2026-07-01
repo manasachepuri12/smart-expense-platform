@@ -4,14 +4,15 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Entity
-@Table(name = "expense_categories")
+@Table(name = "income_categories")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ExpenseCategory {
+public class IncomeCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,13 +30,10 @@ public class ExpenseCategory {
     @Column(name = "is_default", nullable = false)
     private Boolean isDefault;
 
-@   CreationTimestamp
+    @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "expenseCategory")
-    private List<Expense> expenses;
-
-    @OneToMany(mappedBy = "expenseCategory")
-    private List<Budget> budgets;
+    @OneToMany(mappedBy = "incomeCategory")
+    private List<Income> incomes;
 }

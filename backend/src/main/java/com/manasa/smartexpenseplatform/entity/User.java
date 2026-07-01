@@ -34,6 +34,18 @@ public class User {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<ExpenseCategory> expenseCategories;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<IncomeCategory> incomeCategories;
+
+    @OneToMany(mappedBy = "user")
+    private List<Expense> expenses;
+
+    @OneToMany(mappedBy = "user")
+    private List<Income> incomes;
+
+    @OneToMany(mappedBy = "user")
+    private List<Budget> budgets;
 }
