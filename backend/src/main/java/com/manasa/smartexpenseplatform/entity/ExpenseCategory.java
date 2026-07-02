@@ -29,7 +29,7 @@ public class ExpenseCategory {
     @Column(name = "is_default", nullable = false)
     private Boolean isDefault;
 
-@   CreationTimestamp
+    @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
