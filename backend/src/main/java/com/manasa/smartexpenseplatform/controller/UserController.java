@@ -2,7 +2,12 @@ package com.manasa.smartexpenseplatform.controller;
 
 import com.manasa.smartexpenseplatform.entity.User;
 import com.manasa.smartexpenseplatform.service.UserService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.*;
+import com.manasa.smartexpenseplatform.dto.UserRequestDTO;
+import com.manasa.smartexpenseplatform.dto.UserResponseDTO;
 import java.util.List;
 @RestController
 @RequestMapping("/api/users")
@@ -13,25 +18,24 @@ public class UserController {
     }
     
     @PostMapping("/register")
-    public User registerUser(@RequestBody User user) {
-        return userService.registerUser(user);
+    public UserResponseDTO registerUser(@Valid @RequestBody UserRequestDTO request) {
+        return userService.registerUser(request);
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
+    public UserResponseDTO getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public List<UserResponseDTO> getAllUsers() {
+     return userService.getAllUsers();
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id,
-                       @RequestBody User user) {
-
-        return userService.updateUser(id, user);
+    public UserResponseDTO updateUser(@PathVariable Long id,
+                                  @Valid @RequestBody UserRequestDTO request) {
+        return userService.updateUser(id, request);
     }
 
     @DeleteMapping("/{id}")

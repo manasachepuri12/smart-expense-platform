@@ -1,10 +1,14 @@
 package com.manasa.smartexpenseplatform.service.impl;
 
 import com.manasa.smartexpenseplatform.entity.User;
+import com.manasa.smartexpenseplatform.mapper.UserMapper;
 import com.manasa.smartexpenseplatform.repository.UserRepository;
 import com.manasa.smartexpenseplatform.service.UserService;
+import com.manasa.smartexpenseplatform.dto.UserRequestDTO;
+import com.manasa.smartexpenseplatform.dto.UserResponseDTO;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
@@ -13,8 +17,10 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
    @Override
-    public User registerUser(User user) {
-        return userRepository.save(user);
+    public UserResponseDTO registerUser(UserRequestDTO request) {
+        User user = UserMapper.toEntity(request);
+        User savedUser = userRepository.save(user);
+        return UserMapper.toResponseDTO(savedUser);
     }
     @Override
     public User loginUser(String email, String password) {
@@ -22,27 +28,29 @@ public class UserServiceImpl implements UserService {
         throw new UnsupportedOperationException("Unimplemented method 'loginUser'");
     }
     @Override
-    public User getUserById(Long id) {
-        Optional<User> user = userRepository.findById(id);
-        if (user.isPresent()) {
-        return user.get();
-        }
-        throw new RuntimeException("User not found");
+    public UserResponseDTO getUserById(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return UserMapper.toResponseDTO(user);
     }
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserResponseDTO> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        List<UserResponseDTO> responses = new ArrayList<>();
+        for (User user : users) {
+            responses.add(UserMapper.toResponseDTO(user));
+        }
+        return responses;
     }
     @Override
-    public User updateUser(Long id, User user) {
-        Optional<User> existingUser = userRepository.findById(id);
-        if (existingUser.isPresent()) {
-            existingUser.get().setName(user.getName());
-            existingUser.get().setEmail(user.getEmail());
-            existingUser.get().setPassword(user.getPassword());
-            return userRepository.save(existingUser.get());
-        }
-        throw new RuntimeException("User not found");
+    public UserResponseDTO updateUser(Long id, UserRequestDTO request) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setName(request.getName());
+        user.setEmail(request.getEmail());
+        user.setPassword(request.getPassword());
+        User updatedUser = userRepository.save(user);
+        return UserMapper.toResponseDTO(updatedUser);
     }
     @Override
     public void deleteUser(Long id) {

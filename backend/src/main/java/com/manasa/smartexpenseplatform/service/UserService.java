@@ -1,16 +1,18 @@
 package com.manasa.smartexpenseplatform.service;
+import com.manasa.smartexpenseplatform.dto.UserRequestDTO;
+import com.manasa.smartexpenseplatform.dto.UserResponseDTO;
 import com.manasa.smartexpenseplatform.entity.User;
 import java.util.List;
 public interface UserService {
-    User registerUser(User user);
+    UserResponseDTO registerUser(UserRequestDTO request);
     
     User loginUser(String email, String password);
 
-    User getUserById(Long id);
+    UserResponseDTO getUserById(Long id);
 
-    List<User> getAllUsers();
+    public List<UserResponseDTO> getAllUsers();
 
-    User updateUser(Long id, User user);
+    UserResponseDTO updateUser(Long id, UserRequestDTO request);
 
     void deleteUser(Long id);
 
