@@ -19,7 +19,8 @@ public class UserController {
     
     @PostMapping("/register")
     public UserResponseDTO registerUser(@Valid @RequestBody UserRequestDTO request) {
-        return userService.registerUser(request);
+        System.out.println(">>> Register API called");
+    return userService.registerUser(request);
     }
 
     @GetMapping("/{id}")
