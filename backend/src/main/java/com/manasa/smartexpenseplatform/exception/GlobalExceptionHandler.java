@@ -1,6 +1,6 @@
 package com.manasa.smartexpenseplatform.exception;
 
-import org.springframework.web.bind.annotation.ControllerAdvice;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,11 +18,22 @@ public class GlobalExceptionHandler {
         MethodArgumentNotValidException ex) {
 
     Map<String, String> errors = new HashMap<>();
-
-    ex.getBindingResult().getFieldErrors().forEach(error -> {
+        ex.getBindingResult().getFieldErrors().forEach(error -> {
         errors.put(error.getField(), error.getDefaultMessage());
-    });
+        });
 
-    return errors;
-}
+        return errors;
+    }
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public Map<String, String> handleEmailAlreadyExists(
+            EmailAlreadyExistsException ex) {
+
+        Map<String, String> error = new HashMap<>();
+        error.put("message", ex.getMessage());
+
+        return error;
+    }
+    
 }

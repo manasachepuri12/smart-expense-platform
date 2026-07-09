@@ -6,19 +6,29 @@ import com.manasa.smartexpenseplatform.repository.UserRepository;
 import com.manasa.smartexpenseplatform.service.UserService;
 import com.manasa.smartexpenseplatform.dto.UserRequestDTO;
 import com.manasa.smartexpenseplatform.dto.UserResponseDTO;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.ArrayList;
 import java.util.List;
+import com.manasa.smartexpenseplatform.exception.EmailAlreadyExistsException;
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    private final PasswordEncoder passwordEncoder;
+    public UserServiceImpl(UserRepository userRepository,
+                       PasswordEncoder passwordEncoder) {
+            this.userRepository = userRepository;
+            this.passwordEncoder = passwordEncoder;
     }
    @Override
     public UserResponseDTO registerUser(UserRequestDTO request) {
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+            throw new EmailAlreadyExistsException("Email already exists");
+        }
         User user = UserMapper.toEntity(request);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser = userRepository.save(user);
         return UserMapper.toResponseDTO(savedUser);
     }
