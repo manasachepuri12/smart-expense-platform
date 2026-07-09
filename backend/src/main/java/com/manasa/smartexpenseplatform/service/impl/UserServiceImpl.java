@@ -4,6 +4,8 @@ import com.manasa.smartexpenseplatform.entity.User;
 import com.manasa.smartexpenseplatform.mapper.UserMapper;
 import com.manasa.smartexpenseplatform.repository.UserRepository;
 import com.manasa.smartexpenseplatform.service.UserService;
+import com.manasa.smartexpenseplatform.dto.LoginRequestDTO;
+import com.manasa.smartexpenseplatform.dto.LoginResponseDTO;
 import com.manasa.smartexpenseplatform.dto.UserRequestDTO;
 import com.manasa.smartexpenseplatform.dto.UserResponseDTO;
 
@@ -33,9 +35,16 @@ public class UserServiceImpl implements UserService {
         return UserMapper.toResponseDTO(savedUser);
     }
     @Override
-    public User loginUser(String email, String password) {
-     
-        throw new UnsupportedOperationException("Unimplemented method 'loginUser'");
+    public LoginResponseDTO loginUser(LoginRequestDTO request) {
+        User user = userRepository.findByEmail(request.getEmail())
+            .orElseThrow(() -> new RuntimeException("Invalid email or password"));
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+        throw new RuntimeException("Invalid email or password");
+        }
+
+        LoginResponseDTO response = new LoginResponseDTO();
+        response.setMessage("Login successful");
+        return response;
     }
     @Override
     public UserResponseDTO getUserById(Long id) {
