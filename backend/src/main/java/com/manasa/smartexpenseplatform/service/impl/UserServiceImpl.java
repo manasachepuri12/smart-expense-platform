@@ -3,12 +3,12 @@ package com.manasa.smartexpenseplatform.service.impl;
 import com.manasa.smartexpenseplatform.entity.User;
 import com.manasa.smartexpenseplatform.mapper.UserMapper;
 import com.manasa.smartexpenseplatform.repository.UserRepository;
+import com.manasa.smartexpenseplatform.security.JwtService;
 import com.manasa.smartexpenseplatform.service.UserService;
 import com.manasa.smartexpenseplatform.dto.LoginRequestDTO;
 import com.manasa.smartexpenseplatform.dto.LoginResponseDTO;
 import com.manasa.smartexpenseplatform.dto.UserRequestDTO;
 import com.manasa.smartexpenseplatform.dto.UserResponseDTO;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
@@ -19,10 +19,12 @@ import com.manasa.smartexpenseplatform.exception.EmailAlreadyExistsException;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
     public UserServiceImpl(UserRepository userRepository,
-                       PasswordEncoder passwordEncoder) {
+                       PasswordEncoder passwordEncoder,JwtService jwtService) {
             this.userRepository = userRepository;
             this.passwordEncoder = passwordEncoder;
+            this.jwtService = jwtService;
     }
    @Override
     public UserResponseDTO registerUser(UserRequestDTO request) {
@@ -41,9 +43,10 @@ public class UserServiceImpl implements UserService {
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
         throw new RuntimeException("Invalid email or password");
         }
-
+        String token = jwtService.generateToken(user.getEmail());
         LoginResponseDTO response = new LoginResponseDTO();
         response.setMessage("Login successful");
+        response.setToken(token);
         return response;
     }
     @Override
