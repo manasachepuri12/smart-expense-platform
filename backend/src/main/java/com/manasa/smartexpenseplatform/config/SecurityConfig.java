@@ -28,8 +28,11 @@ public class SecurityConfig {
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers(
+                "/api/auth/**",
+                "/api/users/register"
+            ).permitAll()
+            .anyRequest().authenticated()
             )
             .addFilterBefore(
                 jwtAuthenticationFilter,

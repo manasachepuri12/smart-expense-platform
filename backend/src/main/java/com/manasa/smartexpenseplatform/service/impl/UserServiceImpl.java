@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
         user.setName(request.getName());
         user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
+        user.setPassword(passwordEncoder.encode(request.getPassword())); 
         User updatedUser = userRepository.save(user);
         return UserMapper.toResponseDTO(updatedUser);
     }
