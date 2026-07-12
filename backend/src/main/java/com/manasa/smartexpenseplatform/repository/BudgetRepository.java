@@ -5,6 +5,8 @@ import com.manasa.smartexpenseplatform.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.math.BigDecimal;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import java.util.List;
 
 public interface BudgetRepository extends JpaRepository<Budget, Long> {
@@ -20,4 +22,17 @@ public interface BudgetRepository extends JpaRepository<Budget, Long> {
     WHERE b.user = :user
     """)
     BigDecimal getTotalBudgetByUser(User user);
+
+    @Query("""
+    SELECT COALESCE(SUM(b.budgetAmount),0)
+    FROM Budget b
+    WHERE b.user = :user
+    AND b.month = :month
+    AND b.year = :year
+    """)
+    BigDecimal getTotalBudgetByUserAndMonth(
+        @Param("user") User user,
+        @Param("month") Integer month,
+        @Param("year") Integer year
+    );
 }
