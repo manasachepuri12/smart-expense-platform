@@ -6,7 +6,9 @@ import com.manasa.smartexpenseplatform.dto.MonthlyReportDTO;
 import com.manasa.smartexpenseplatform.service.ReportService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @RestController
 @RequestMapping("/api/reports")
 @Tag(

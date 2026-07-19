@@ -10,7 +10,9 @@ import com.manasa.smartexpenseplatform.dto.BudgetAnalyticsDTO;
 import com.manasa.smartexpenseplatform.service.AnalyticsService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @RestController
 @RequestMapping("/api/analytics")
 @Tag(
