@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.manasa.smartexpenseplatform.dto.ExpenseTargetRequestDTO;
 import com.manasa.smartexpenseplatform.dto.ExpenseTargetResponseDTO;
 import com.manasa.smartexpenseplatform.entity.ExpenseTarget;
+import com.manasa.smartexpenseplatform.exception.ResourceNotFoundException;
 import com.manasa.smartexpenseplatform.mapper.ExpenseTargetMapper;
 import com.manasa.smartexpenseplatform.repository.ExpenseTargetRepository;
 import com.manasa.smartexpenseplatform.service.ExpenseTargetService;
@@ -48,7 +49,7 @@ public class ExpenseTargetServiceImpl implements ExpenseTargetService {
 
         ExpenseTarget target = expenseTargetRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Expense Target not found"));
+                        new ResourceNotFoundException("Expense Target not found"));
 
         return ExpenseTargetMapper.toResponseDTO(target);
     }
@@ -60,7 +61,7 @@ public class ExpenseTargetServiceImpl implements ExpenseTargetService {
 
         ExpenseTarget target = expenseTargetRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Expense Target not found"));
+                        new ResourceNotFoundException("Expense Target not found"));
 
         target.setName(request.getName());
 
@@ -73,7 +74,7 @@ public class ExpenseTargetServiceImpl implements ExpenseTargetService {
 
         ExpenseTarget target = expenseTargetRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Expense Target not found"));
+                        new ResourceNotFoundException("Expense Target not found"));
 
         expenseTargetRepository.delete(target);
     }

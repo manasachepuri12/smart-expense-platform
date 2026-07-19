@@ -11,6 +11,7 @@ import com.manasa.smartexpenseplatform.dto.IncomeCategoryRequestDTO;
 import com.manasa.smartexpenseplatform.dto.IncomeCategoryResponseDTO;
 import com.manasa.smartexpenseplatform.entity.IncomeCategory;
 import com.manasa.smartexpenseplatform.entity.User;
+import com.manasa.smartexpenseplatform.exception.ResourceNotFoundException;
 import com.manasa.smartexpenseplatform.mapper.IncomeCategoryMapper;
 import com.manasa.smartexpenseplatform.repository.IncomeCategoryRepository;
 import com.manasa.smartexpenseplatform.repository.UserRepository;
@@ -40,7 +41,8 @@ public class IncomeCategoryServiceImpl implements IncomeCategoryService {
         String email = authentication.getName();
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("User not found"));
 
         IncomeCategory category =
                 IncomeCategoryMapper.toEntity(request, user);
@@ -60,7 +62,8 @@ public class IncomeCategoryServiceImpl implements IncomeCategoryService {
         String email = authentication.getName();
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("User not found"));
 
         List<IncomeCategory> categories =
                 incomeCategoryRepository.findByUser(user);
@@ -79,10 +82,12 @@ public class IncomeCategoryServiceImpl implements IncomeCategoryService {
         String email = authentication.getName();
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("User not found"));
 
         IncomeCategory category = incomeCategoryRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Category not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Category not found"));
 
         if (!category.getUser().getId().equals(user.getId())) {
             throw new RuntimeException("Access denied");
@@ -102,10 +107,12 @@ public class IncomeCategoryServiceImpl implements IncomeCategoryService {
         String email = authentication.getName();
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("User not found"));
 
         IncomeCategory category = incomeCategoryRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Category not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Category not found"));
 
         if (!category.getUser().getId().equals(user.getId())) {
             throw new RuntimeException("Access denied");
@@ -128,10 +135,12 @@ public class IncomeCategoryServiceImpl implements IncomeCategoryService {
         String email = authentication.getName();
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("User not found"));
 
         IncomeCategory category = incomeCategoryRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Category not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Category not found"));
 
         if (!category.getUser().getId().equals(user.getId())) {
             throw new RuntimeException("Access denied");

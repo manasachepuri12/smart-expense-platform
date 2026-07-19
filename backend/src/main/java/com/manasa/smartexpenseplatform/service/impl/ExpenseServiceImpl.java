@@ -15,7 +15,7 @@ import com.manasa.smartexpenseplatform.repository.ExpenseRepository;
 import com.manasa.smartexpenseplatform.repository.ExpenseTargetRepository;
 import com.manasa.smartexpenseplatform.repository.UserRepository;
 import com.manasa.smartexpenseplatform.service.ExpenseService;
-
+import com.manasa.smartexpenseplatform.exception.ResourceNotFoundException;
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
     private final ExpenseRepository expenseRepository;
@@ -38,17 +38,17 @@ public class ExpenseServiceImpl implements ExpenseService {
         Authentication authentication =
         SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        User user = userRepository.findByEmail(email)
+       User user = userRepository.findByEmail(email)
         .orElseThrow(() ->
-                new RuntimeException("User not found"));
+            new ResourceNotFoundException("User not found"));
         ExpenseCategory category = expenseCategoryRepository
         .findById(request.getExpenseCategoryId())
         .orElseThrow(() ->
-                new RuntimeException("Expense category not found"));
+            new ResourceNotFoundException("Expense category not found"));
         ExpenseTarget target = expenseTargetRepository
         .findById(request.getExpenseTargetId())
         .orElseThrow(() ->
-                new RuntimeException("Expense target not found"));
+            new ResourceNotFoundException("Expense target not found"));
         Expense expense = ExpenseMapper.toEntity(
             request,
             user,
@@ -64,8 +64,8 @@ public class ExpenseServiceImpl implements ExpenseService {
         Authentication authentication =
             SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        User user = userRepository.findByEmail(email)
-            .orElseThrow(() -> new RuntimeException("User not found"));
+       User user = userRepository.findByEmail(email)
+        .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         return expenseRepository.findByUser(user)
                 .stream()
                 .map(ExpenseMapper::toResponseDTO)
@@ -75,9 +75,8 @@ public class ExpenseServiceImpl implements ExpenseService {
         @Override
     public ExpenseResponseDTO getExpenseById(Long id) {
 
-        Expense expense = expenseRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Expense not found"));
-
+       Expense expense = expenseRepository.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Expense not found"));
         return ExpenseMapper.toResponseDTO(expense);
     }
 
@@ -85,16 +84,15 @@ public class ExpenseServiceImpl implements ExpenseService {
     public ExpenseResponseDTO updateExpense(Long id, ExpenseRequestDTO request) {
 
         Expense expense = expenseRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Expense not found"));
+        .orElseThrow(() -> new ResourceNotFoundException("Expense not found"));
 
         ExpenseCategory category = expenseCategoryRepository
-            .findById(request.getExpenseCategoryId())
-            .orElseThrow(() -> new RuntimeException("Expense category not found"));
+        .findById(request.getExpenseCategoryId())
+        .orElseThrow(() -> new ResourceNotFoundException("Expense category not found"));
 
         ExpenseTarget target = expenseTargetRepository
-            .findById(request.getExpenseTargetId())
-            .orElseThrow(() -> new RuntimeException("Expense target not found"));
-
+        .findById(request.getExpenseTargetId())
+        .orElseThrow(() -> new ResourceNotFoundException("Expense target not found"));
         expense.setExpenseCategory(category);
         expense.setExpenseTarget(target);
         expense.setAmount(request.getAmount());
@@ -112,7 +110,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     public void deleteExpense(Long id) {
 
         Expense expense = expenseRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Expense not found"));
+        .orElseThrow(() -> new ResourceNotFoundException("Expense not found"));
 
         expenseRepository.delete(expense);
     }

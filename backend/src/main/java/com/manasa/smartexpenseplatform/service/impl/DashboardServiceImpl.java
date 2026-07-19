@@ -1,4 +1,3 @@
-
 package com.manasa.smartexpenseplatform.service.impl;
 
 import java.math.BigDecimal;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.manasa.smartexpenseplatform.dto.DashboardSummaryDTO;
 import com.manasa.smartexpenseplatform.entity.User;
+import com.manasa.smartexpenseplatform.exception.ResourceNotFoundException;
 import com.manasa.smartexpenseplatform.repository.BudgetRepository;
 import com.manasa.smartexpenseplatform.repository.ExpenseRepository;
 import com.manasa.smartexpenseplatform.repository.IncomeRepository;
@@ -38,31 +38,32 @@ public class DashboardServiceImpl implements DashboardService {
     @Override
     public DashboardSummaryDTO getDashboardSummary() {
 
-    // Get logged-in user
+        // Get logged-in user
         Authentication authentication =
-            SecurityContextHolder.getContext().getAuthentication();
+                SecurityContextHolder.getContext().getAuthentication();
 
         String email = authentication.getName();
 
         User user = userRepository.findByEmail(email)
-            .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("User not found"));
 
-    // Fetch totals
+        // Fetch totals
         BigDecimal totalIncome = incomeRepository.getTotalIncomeByUser(user);
         BigDecimal totalExpense = expenseRepository.getTotalExpenseByUser(user);
         BigDecimal totalBudget = budgetRepository.getTotalBudgetByUser(user);
 
-    // Perform calculations
+        // Perform calculations
         BigDecimal currentBalance = totalIncome.subtract(totalExpense);
         BigDecimal remainingBudget = totalBudget.subtract(totalExpense);
 
-    // Return DTO
+        // Return DTO
         return DashboardSummaryDTO.builder()
-            .totalIncome(totalIncome)
-            .totalExpense(totalExpense)
-            .currentBalance(currentBalance)
-            .totalBudget(totalBudget)
-            .remainingBudget(remainingBudget)
-            .build();
+                .totalIncome(totalIncome)
+                .totalExpense(totalExpense)
+                .currentBalance(currentBalance)
+                .totalBudget(totalBudget)
+                .remainingBudget(remainingBudget)
+                .build();
     }
 }
