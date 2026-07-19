@@ -7,15 +7,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.manasa.smartexpenseplatform.dto.DashboardSummaryDTO;
 import com.manasa.smartexpenseplatform.service.DashboardService;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/dashboard")
 @Tag(
-    name = "Dashboard",
-    description = "Dashboard statistics and summaries"
+        name = "Dashboard",
+        description = "APIs for retrieving dashboard statistics and financial summaries"
 )
 public class DashboardController {
 
@@ -25,6 +26,14 @@ public class DashboardController {
         this.dashboardService = dashboardService;
     }
 
+    @Operation(
+            summary = "Get dashboard summary",
+            description = "Retrieves an overview of the authenticated user's financial data, including total income, expenses, savings, budget, and other dashboard statistics."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Dashboard summary retrieved successfully"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized")
+    })
     @GetMapping("/summary")
     public DashboardSummaryDTO getDashboardSummary() {
         return dashboardService.getDashboardSummary();
