@@ -12,9 +12,11 @@ public class ExpenseCategoryMapper {
             User user) {
 
         return ExpenseCategory.builder()
-                .name(request.getName())
-                .user(user)
-                .build();
+        .name(request.getName())
+        .description(null)
+        .isDefault(false)
+        .user(user)
+        .build();
     }
 
     public static ExpenseCategoryResponseDTO toResponseDTO(
