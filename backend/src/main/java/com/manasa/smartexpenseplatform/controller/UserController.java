@@ -3,6 +3,7 @@ package com.manasa.smartexpenseplatform.controller;
 import com.manasa.smartexpenseplatform.entity.User;
 import com.manasa.smartexpenseplatform.service.UserService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,10 @@ import com.manasa.smartexpenseplatform.dto.UserResponseDTO;
 import java.util.List;
 @RestController
 @RequestMapping("/api/users")
+@Tag(
+    name = "User Management",
+    description = "APIs for managing users"
+)
 public class UserController {
     private final UserService userService;
     public UserController(UserService userService) {

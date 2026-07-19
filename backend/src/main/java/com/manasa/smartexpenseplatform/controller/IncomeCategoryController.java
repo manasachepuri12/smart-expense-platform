@@ -11,11 +11,16 @@ import com.manasa.smartexpenseplatform.dto.IncomeCategoryRequestDTO;
 import com.manasa.smartexpenseplatform.dto.IncomeCategoryResponseDTO;
 import com.manasa.smartexpenseplatform.service.IncomeCategoryService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/income-categories")
 @Validated
+@Tag(
+    name = "Income Categories",
+    description = "Manage income categories"
+)
 public class IncomeCategoryController {
 
     private final IncomeCategoryService incomeCategoryService;

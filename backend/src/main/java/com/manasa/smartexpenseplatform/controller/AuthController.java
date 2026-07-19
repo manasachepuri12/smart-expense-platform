@@ -8,10 +8,15 @@ import com.manasa.smartexpenseplatform.dto.LoginResponseDTO;
 import com.manasa.smartexpenseplatform.dto.LoginRequestDTO;
 import com.manasa.smartexpenseplatform.service.UserService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/auth")
+@Tag(
+    name = "Authentication",
+    description = "User Registration and Login APIs"
+)
 public class AuthController {
     private final UserService userService;
     public AuthController(UserService userService) {

@@ -11,11 +11,16 @@ import com.manasa.smartexpenseplatform.dto.ExpenseCategoryRequestDTO;
 import com.manasa.smartexpenseplatform.dto.ExpenseCategoryResponseDTO;
 import com.manasa.smartexpenseplatform.service.ExpenseCategoryService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/expense-categories")
 @Validated
+@Tag(
+    name = "Expense Categories",
+    description = "Manage expense categories"
+)
 public class ExpenseCategoryController {
 
     private final ExpenseCategoryService expenseCategoryService;

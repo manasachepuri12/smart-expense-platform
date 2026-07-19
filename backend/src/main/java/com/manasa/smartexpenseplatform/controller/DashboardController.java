@@ -7,8 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.manasa.smartexpenseplatform.dto.DashboardSummaryDTO;
 import com.manasa.smartexpenseplatform.service.DashboardService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/dashboard")
+@Tag(
+    name = "Dashboard",
+    description = "Dashboard statistics and summaries"
+)
 public class DashboardController {
 
     private final DashboardService dashboardService;

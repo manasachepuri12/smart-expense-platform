@@ -12,10 +12,16 @@ import java.util.List;
 import com.manasa.smartexpenseplatform.dto.ExpenseRequestDTO;
 import com.manasa.smartexpenseplatform.dto.ExpenseResponseDTO;
 import com.manasa.smartexpenseplatform.service.ExpenseService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/expenses")
+@Tag(
+    name = "Expense Management",
+    description = "APIs for managing expenses"
+)
 public class ExpenseController {
     private final ExpenseService expenseService;
     public ExpenseController(ExpenseService expenseService) {

@@ -8,10 +8,15 @@ import com.manasa.smartexpenseplatform.dto.IncomeRequestDTO;
 import com.manasa.smartexpenseplatform.dto.IncomeResponseDTO;
 import com.manasa.smartexpenseplatform.service.IncomeService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/income")
+@Tag(
+    name = "Income Management",
+    description = "APIs for managing incomes"
+)
 public class IncomeController {
 
     private final IncomeService incomeService;

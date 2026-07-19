@@ -9,8 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.manasa.smartexpenseplatform.dto.BudgetAnalyticsDTO;
 import com.manasa.smartexpenseplatform.service.AnalyticsService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/analytics")
+@Tag(
+    name = "Analytics",
+    description = "APIs for expense analytics, budget insights, and financial statistics"
+)
 public class AnalyticsController {
 
     private final AnalyticsService analyticsService;

@@ -8,10 +8,15 @@ import com.manasa.smartexpenseplatform.dto.BudgetRequestDTO;
 import com.manasa.smartexpenseplatform.dto.BudgetResponseDTO;
 import com.manasa.smartexpenseplatform.service.BudgetService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/budgets")
+@Tag(
+    name = "Budget Management",
+    description = "APIs for managing budgets"
+)
 public class BudgetController {
 
     private final BudgetService budgetService;

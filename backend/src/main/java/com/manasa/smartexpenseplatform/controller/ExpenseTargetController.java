@@ -10,10 +10,15 @@ import com.manasa.smartexpenseplatform.dto.ExpenseTargetRequestDTO;
 import com.manasa.smartexpenseplatform.dto.ExpenseTargetResponseDTO;
 import com.manasa.smartexpenseplatform.service.ExpenseTargetService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/expense-targets")
+@Tag(
+    name = "Expense Targets",
+    description = "Manage expense targets"
+)
 public class ExpenseTargetController {
 
     private final ExpenseTargetService expenseTargetService;

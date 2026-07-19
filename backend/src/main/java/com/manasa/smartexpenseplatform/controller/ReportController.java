@@ -5,8 +5,14 @@ import org.springframework.web.bind.annotation.*;
 import com.manasa.smartexpenseplatform.dto.MonthlyReportDTO;
 import com.manasa.smartexpenseplatform.service.ReportService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/reports")
+@Tag(
+    name = "Reports",
+    description = "Monthly reports and analytics"
+)
 public class ReportController {
 
     private final ReportService reportService;
