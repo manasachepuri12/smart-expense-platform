@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics | Smart Expense Platform</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body class="font-[Inter] bg-slate-100">
+
+<div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+
+    <aside class="w-72 bg-[#001D39] text-white flex flex-col">
+
+        <div class="p-8 border-b border-white/20">
+
+            <h1 class="text-3xl font-bold">
+                <i class="fa-solid fa-wallet mr-2"></i>
+                Smart Expense
+            </h1>
+
+        </div>
+
+        <nav class="flex-1 p-6">
+
+            <ul class="space-y-4">
+
+                <li><a href="dashboard.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl"><i class="fa-solid fa-house"></i>Dashboard</a></li>
+
+                <li><a href="expenses.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl"><i class="fa-solid fa-receipt"></i>Expenses</a></li>
+
+                <li><a href="income.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl"><i class="fa-solid fa-money-bill-trend-up"></i>Income</a></li>
+
+                <li><a href="budget.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl"><i class="fa-solid fa-piggy-bank"></i>Budget</a></li>
+
+                <li><a href="analytics.html" class="flex items-center gap-3 bg-white/10 rounded-xl p-3"><i class="fa-solid fa-chart-line"></i>Analytics</a></li>
+
+                <li><a href="reports.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl"><i class="fa-solid fa-file-lines"></i>Reports</a></li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="flex-1">
+
+        <!-- Header -->
+
+        <header class="bg-white shadow-sm px-10 py-5">
+
+            <h2 class="text-3xl font-bold text-slate-800">
+
+                Analytics Dashboard
+
+            </h2>
+
+            <p class="text-slate-500 mt-1">
+
+                Visualize your financial performance
+
+            </p>
+
+        </header>
+
+        <section class="p-10">
+
+            <!-- Summary Cards -->
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+
+                <div class="card p-6">
+                    <p class="text-slate-500">Total Income</p>
+                    <h2 class="text-3xl font-bold text-green-600 mt-3">₹40,000</h2>
+                </div>
+
+                <div class="card p-6">
+                    <p class="text-slate-500">Total Expense</p>
+                    <h2 class="text-3xl font-bold text-red-600 mt-3">₹15,000</h2>
+                </div>
+
+                <div class="card p-6">
+                    <p class="text-slate-500">Savings</p>
+                    <h2 class="text-3xl font-bold text-blue-700 mt-3">₹25,000</h2>
+                </div>
+
+                <div class="card p-6">
+                    <p class="text-slate-500">Savings Rate</p>
+                    <h2 class="text-3xl font-bold text-orange-500 mt-3">62%</h2>
+                </div>
+
+            </div>
+
+            <!-- Charts -->
+
+            <div class="grid lg:grid-cols-2 gap-8">
+
+                <!-- Pie Chart -->
+
+                <div class="card p-8">
+
+                    <h3 class="text-xl font-bold mb-6">
+
+                        Expense Distribution
+
+                    </h3>
+
+                    <canvas id="expenseChart"></canvas>
+
+                </div>
+
+                <!-- Bar Chart -->
+
+                <div class="card p-8">
+
+                    <h3 class="text-xl font-bold mb-6">
+
+                        Income vs Expense
+
+                    </h3>
+
+                    <canvas id="barChart"></canvas>
+
+                </div>
+
+            </div>
+
+            <!-- Line Chart -->
+
+            <div class="card p-8 mt-8">
+
+                <h3 class="text-xl font-bold mb-6">
+
+                    Monthly Spending Trend
+
+                </h3>
+
+                <canvas id="lineChart"></canvas>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+
+new Chart(document.getElementById("expenseChart"),{
+
+    type:"pie",
+
+    data:{
+
+        labels:["Food","Shopping","Travel","Bills","Entertainment"],
+
+        datasets:[{
+
+            data:[8000,5000,3000,2500,1500]
+
+        }]
+
+    }
+
+});
+
+new Chart(document.getElementById("barChart"),{
+
+    type:"bar",
+
+    data:{
+
+        labels:["Jan","Feb","Mar","Apr","May","Jun"],
+
+        datasets:[
+
+        {
+
+            label:"Income",
+
+            data:[30000,35000,38000,40000,42000,45000]
+
+        },
+
+        {
+
+            label:"Expense",
+
+            data:[18000,20000,17000,22000,21000,24000]
+
+        }
+
+        ]
+
+    }
+
+});
+
+new Chart(document.getElementById("lineChart"),{
+
+    type:"line",
+
+    data:{
+
+        labels:["Jan","Feb","Mar","Apr","May","Jun"],
+
+        datasets:[{
+
+            label:"Expenses",
+
+            data:[18000,20000,17000,22000,21000,24000],
+
+            fill:false,
+
+            tension:0.4
+
+        }]
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>

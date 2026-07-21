@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports | Smart Expense Platform</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body class="font-[Inter] bg-slate-100">
+
+<div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+
+    <aside class="w-72 bg-[#001D39] text-white flex flex-col">
+
+        <div class="p-8 border-b border-white/20">
+
+            <h1 class="text-3xl font-bold">
+
+                <i class="fa-solid fa-wallet mr-2"></i>
+
+                Smart Expense
+
+            </h1>
+
+        </div>
+
+        <nav class="flex-1 p-6">
+
+            <ul class="space-y-4">
+
+                <li>
+                    <a href="dashboard.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="expenses.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <i class="fa-solid fa-receipt"></i>
+                        Expenses
+                    </a>
+                </li>
+
+                <li>
+                    <a href="income.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <i class="fa-solid fa-money-bill-trend-up"></i>
+                        Income
+                    </a>
+                </li>
+
+                <li>
+                    <a href="budget.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                        Budget
+                    </a>
+                </li>
+
+                <li>
+                    <a href="analytics.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <i class="fa-solid fa-chart-line"></i>
+                        Analytics
+                    </a>
+                </li>
+
+                <li>
+                    <a href="reports.html" class="flex items-center gap-3 bg-white/10 rounded-xl p-3">
+                        <i class="fa-solid fa-file-lines"></i>
+                        Reports
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="flex-1">
+
+        <!-- Header -->
+
+        <header class="bg-white shadow-sm px-10 py-5 flex justify-between items-center">
+
+            <div>
+
+                <h2 class="text-3xl font-bold text-slate-800">
+
+                    Financial Reports
+
+                </h2>
+
+                <p class="text-slate-500">
+
+                    View and export your financial reports
+
+                </p>
+
+            </div>
+
+            <div class="flex gap-3">
+
+                <button class="btn-primary px-5 py-3 rounded-xl">
+
+                    <i class="fa-solid fa-file-pdf mr-2"></i>
+
+                    Download PDF
+
+                </button>
+
+                <button class="btn-primary px-5 py-3 rounded-xl">
+
+                    <i class="fa-solid fa-file-csv mr-2"></i>
+
+                    Export CSV
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <section class="p-10">
+
+            <!-- Summary Cards -->
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+
+                <div class="card p-6">
+
+                    <p class="text-slate-500">Total Income</p>
+
+                    <h2 class="text-3xl font-bold text-green-600 mt-3">
+
+                        ₹40,000
+
+                    </h2>
+
+                </div>
+
+                <div class="card p-6">
+
+                    <p class="text-slate-500">Total Expenses</p>
+
+                    <h2 class="text-3xl font-bold text-red-600 mt-3">
+
+                        ₹15,000
+
+                    </h2>
+
+                </div>
+
+                <div class="card p-6">
+
+                    <p class="text-slate-500">Net Savings</p>
+
+                    <h2 class="text-3xl font-bold text-blue-700 mt-3">
+
+                        ₹25,000
+
+                    </h2>
+
+                </div>
+
+                <div class="card p-6">
+
+                    <p class="text-slate-500">Budget Utilized</p>
+
+                    <h2 class="text-3xl font-bold text-orange-500 mt-3">
+
+                        65%
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <!-- Monthly Report Table -->
+
+            <div class="card p-8">
+
+                <div class="flex justify-between items-center mb-6">
+
+                    <h3 class="text-2xl font-bold">
+
+                        Monthly Report
+
+                    </h3>
+
+                    <button onclick="window.print()"
+                            class="btn-primary px-5 py-2 rounded-lg">
+
+                        <i class="fa-solid fa-print mr-2"></i>
+
+                        Print Report
+
+                    </button>
+
+                </div>
+
+                <div class="overflow-x-auto">
+
+                    <table class="w-full">
+
+                        <thead>
+
+                            <tr class="border-b text-left">
+
+                                <th class="py-4">Month</th>
+                                <th>Income</th>
+                                <th>Expenses</th>
+                                <th>Savings</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr class="border-b">
+
+                                <td class="py-4">January</td>
+                                <td class="text-green-600">₹35,000</td>
+                                <td class="text-red-600">₹20,000</td>
+                                <td>₹15,000</td>
+
+                                <td>
+
+                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+
+                                        Good
+
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="border-b">
+
+                                <td class="py-4">February</td>
+                                <td class="text-green-600">₹40,000</td>
+                                <td class="text-red-600">₹18,000</td>
+                                <td>₹22,000</td>
+
+                                <td>
+
+                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+
+                                        Excellent
+
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="border-b">
+
+                                <td class="py-4">March</td>
+                                <td class="text-green-600">₹38,000</td>
+                                <td class="text-red-600">₹25,000</td>
+                                <td>₹13,000</td>
+
+                                <td>
+
+                                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
+
+                                        Average
+
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td class="py-4">April</td>
+                                <td class="text-green-600">₹42,000</td>
+                                <td class="text-red-600">₹17,000</td>
+                                <td>₹25,000</td>
+
+                                <td>
+
+                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+
+                                        Excellent
+
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>
