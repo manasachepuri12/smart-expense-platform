@@ -1,0 +1,90 @@
+/* =====================================================
+   LOGIN PAGE LAYOUT
+===================================================== */
+
+.login-page{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:100vh;
+}
+
+/* =====================================================
+   LEFT PANEL
+===================================================== */
+
+.login-left{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:80px;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+        135deg,
+        var(--navy) 0%,
+        var(--primary) 45%,
+        var(--secondary) 100%
+    );
+
+    color:var(--white);
+}
+
+/* =====================================================
+   RIGHT PANEL
+===================================================== */
+
+.login-right{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:80px;
+
+    background:var(--background);
+}
+
+/* =====================================================
+   BRAND CONTAINER
+===================================================== */
+
+.brand{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:520px;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media(max-width:992px){
+
+    .login-page{
+
+        grid-template-columns:1fr;
+    }
+
+    .login-left{
+
+        display:none;
+    }
+
+    .login-right{
+
+        padding:40px 20px;
+    }
+
+}

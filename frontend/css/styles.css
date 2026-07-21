@@ -1,0 +1,189 @@
+/* =====================================================
+   GOOGLE FONT & RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,#BDD8E9 0%,#F7FBFF 100%);
+    color:#1E293B;
+    min-height:100vh;
+    line-height:1.6;
+}
+
+/* =====================================================
+   COLOR PALETTE
+===================================================== */
+
+:root{
+
+    /* Brand Colors */
+
+    --navy:#001D39;
+    --primary:#0A4174;
+    --secondary:#49769F;
+    --accent:#4E8EA2;
+
+    --soft-blue:#6EA2B3;
+    --light-blue:#7BBDE8;
+
+    --background:#F7FBFF;
+
+    /* Neutral */
+
+    --white:#FFFFFF;
+
+    --text-dark:#1E293B;
+    --text-light:#64748B;
+
+    --border:#DCE6EF;
+
+    /* Status */
+
+    --success:#22C55E;
+    --danger:#EF4444;
+
+    /* Radius */
+
+    --radius-sm:10px;
+    --radius-md:16px;
+    --radius-lg:22px;
+
+    /* Shadow */
+
+    --shadow-sm:0 5px 15px rgba(0,29,57,.08);
+
+    --shadow-md:0 12px 35px rgba(0,29,57,.12);
+
+    --shadow-lg:0 20px 50px rgba(0,29,57,.18);
+
+    /* Transition */
+
+    --transition:.3s ease;
+}
+
+/* =====================================================
+   TYPOGRAPHY
+===================================================== */
+
+h1{
+    font-size:3.5rem;
+    font-weight:800;
+}
+
+h2{
+    font-size:2rem;
+    font-weight:700;
+}
+
+h3{
+    font-size:1.4rem;
+    font-weight:600;
+}
+
+p{
+    color:var(--text-light);
+}
+
+a{
+    color:var(--primary);
+    text-decoration:none;
+    transition:var(--transition);
+}
+
+a:hover{
+    color:var(--navy);
+}
+
+/* =====================================================
+   FORM ELEMENTS
+===================================================== */
+
+input{
+
+    width:100%;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-sm);
+
+    padding:15px 18px;
+
+    font-size:15px;
+
+    transition:var(--transition);
+
+    background:white;
+}
+
+input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(10,65,116,.12);
+
+    outline:none;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn-primary{
+
+    width:100%;
+
+    border:none;
+
+    border-radius:var(--radius-sm);
+
+    padding:15px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+}
+
+.btn-primary:hover{
+
+    background:var(--navy);
+
+    transform:translateY(-2px);
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card{
+
+    background:white;
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-md);
+
+    transition:var(--transition);
+}
+
+.card:hover{
+
+    box-shadow:var(--shadow-lg);
+}

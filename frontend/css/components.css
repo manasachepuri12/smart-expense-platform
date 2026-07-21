@@ -1,0 +1,151 @@
+/* =====================================================
+   LOGIN CARD
+===================================================== */
+
+.login-card{
+
+    width:100%;
+    max-width:440px;
+
+    background:var(--white);
+
+    border-radius:var(--radius-lg);
+
+    padding:50px 45px;
+
+    box-shadow:var(--shadow-md);
+}
+
+.login-card h2{
+
+    margin-bottom:10px;
+}
+
+.login-card p{
+
+    margin-bottom:35px;
+}
+
+/* =====================================================
+   INPUT GROUP
+===================================================== */
+
+.input-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:24px;
+}
+
+.input-group label{
+
+    font-size:15px;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+    color:var(--text-dark);
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.login-btn{
+
+    margin-top:10px;
+}
+
+/* =====================================================
+   BRAND SECTION
+===================================================== */
+
+.logo{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.15);
+
+    font-size:26px;
+
+    font-weight:700;
+
+    margin-bottom:30px;
+}
+
+.brand h1{
+
+    margin-bottom:24px;
+
+    line-height:1.2;
+}
+
+.brand p{
+
+    color:rgba(255,255,255,.85);
+
+    font-size:18px;
+
+    margin-bottom:40px;
+
+    max-width:450px;
+}
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.features{
+
+    list-style:none;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+}
+
+.features li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    font-size:17px;
+
+    color:rgba(255,255,255,.95);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.auth-footer{
+
+    text-align:center;
+
+    margin-top:30px;
+
+    color:var(--text-light);
+}
+
+.auth-footer a{
+
+    font-weight:600;
+}
