@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | Smart Expense Platform</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body class="font-[Inter] bg-slate-100">
+
+<div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+
+    <aside class="w-72 bg-[#001D39] text-white flex flex-col">
+
+        <div class="p-8 border-b border-white/20">
+
+            <h1 class="text-3xl font-bold">
+
+                <i class="fa-solid fa-wallet mr-2"></i>
+
+                Smart Expense
+
+            </h1>
+
+        </div>
+
+        <nav class="flex-1 p-6">
+
+            <ul class="space-y-4">
+
+                <li>
+                    <a href="dashboard.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <i class="fa-solid fa-house"></i> Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="expenses.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <i class="fa-solid fa-receipt"></i> Expenses
+                    </a>
+                </li>
+
+                <li>
+                    <a href="income.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <i class="fa-solid fa-money-bill-trend-up"></i> Income
+                    </a>
+                </li>
+
+                <li>
+                    <a href="budget.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <i class="fa-solid fa-piggy-bank"></i> Budget
+                    </a>
+                </li>
+
+                <li>
+                    <a href="analytics.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <i class="fa-solid fa-chart-line"></i> Analytics
+                    </a>
+                </li>
+
+                <li>
+                    <a href="reports.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <i class="fa-solid fa-file-lines"></i> Reports
+                    </a>
+                </li>
+
+                <li>
+            <a href="profile.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                <i class="fa-solid fa-user"></i>
+                Profile
+            </a>
+        </li>
+
+        <li class="pt-8 border-t border-white/20 mt-8">
+            <a href="login.html" class="flex items-center gap-3 p-3 hover:bg-red-500 rounded-xl transition">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="flex-1">
+
+        <!-- Header -->
+
+        <header class="bg-white shadow-sm px-10 py-5">
+
+            <h2 class="text-3xl font-bold text-slate-800">
+
+                My Profile
+
+            </h2>
+
+            <p class="text-slate-500 mt-1">
+
+                Manage your personal information and account settings
+
+            </p>
+
+        </header>
+
+        <section class="p-10">
+
+            <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-10">
+
+                <!-- Profile Photo -->
+
+                <div class="flex flex-col items-center">
+
+                    <div
+                        class="w-32 h-32 rounded-full bg-[#0A4174] flex items-center justify-center text-white text-5xl font-bold">
+
+                        M
+
+                    </div>
+
+                    <button
+                        class="mt-5 px-5 py-2 rounded-xl bg-[#0A4174] text-white hover:bg-[#001D39] transition">
+
+                        <i class="fa-solid fa-camera mr-2"></i>
+
+                        Change Photo
+
+                    </button>
+
+                </div>
+
+                <!-- Form -->
+
+                <div class="grid md:grid-cols-2 gap-8 mt-10">
+
+                    <div>
+
+                        <label class="block mb-2 font-semibold">
+
+                            Full Name
+
+                        </label>
+
+                        <input
+                            type="text"
+                            value="Manasa"
+                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    </div>
+
+                    <div>
+
+                        <label class="block mb-2 font-semibold">
+
+                            Email
+
+                        </label>
+
+                        <input
+                            type="email"
+                            value="manasa@email.com"
+                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    </div>
+
+                    <div>
+
+                        <label class="block mb-2 font-semibold">
+
+                            Phone Number
+
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="+91 XXXXX XXXXX"
+                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    </div>
+
+                    <div>
+
+                        <label class="block mb-2 font-semibold">
+
+                            Monthly Income
+
+                        </label>
+
+                        <input
+                            type="number"
+                            placeholder="50000"
+                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    </div>
+
+                    <div>
+
+                        <label class="block mb-2 font-semibold">
+
+                            Currency
+
+                        </label>
+
+                        <select
+                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                            <option>INR (₹)</option>
+                            <option>USD ($)</option>
+                            <option>EUR (€)</option>
+
+                        </select>
+
+                    </div>
+
+                    <div>
+
+                        <label class="block mb-2 font-semibold">
+
+                            Monthly Budget Goal
+
+                        </label>
+
+                        <input
+                            type="number"
+                            placeholder="30000"
+                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    </div>
+
+                </div>
+
+                <!-- Security -->
+
+                <div class="mt-10">
+
+                    <h3 class="text-xl font-bold mb-5">
+
+                        Security
+
+                    </h3>
+
+                    <button
+                        class="px-6 py-3 rounded-xl bg-orange-500 text-white hover:bg-orange-600 transition">
+
+                        <i class="fa-solid fa-lock mr-2"></i>
+
+                        Change Password
+
+                    </button>
+
+                </div>
+
+                <!-- Preferences -->
+
+                <div class="mt-10">
+
+                    <h3 class="text-xl font-bold mb-5">
+
+                        Preferences
+
+                    </h3>
+
+                    <div class="space-y-4">
+
+                        <label class="flex items-center justify-between">
+
+                            <span>Email Notifications</span>
+
+                            <input type="checkbox" checked class="w-5 h-5">
+
+                        </label>
+
+                        <label class="flex items-center justify-between">
+
+                            <span>Expense Alerts</span>
+
+                            <input type="checkbox" checked class="w-5 h-5">
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <!-- Buttons -->
+
+                <div class="flex gap-4 mt-12">
+
+                    <button
+                        class="px-8 py-3 rounded-xl bg-[#0A4174] text-white hover:bg-[#001D39] transition">
+
+                        Save Changes
+
+                    </button>
+
+                    <button
+                        class="px-8 py-3 rounded-xl border border-gray-400 hover:bg-gray-100 transition">
+
+                        Cancel
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>
