@@ -123,10 +123,11 @@
                 </li>
 
                     <li class="pt-8 border-t border-white/20 mt-8">
-            <a href="login.html" class="flex items-center gap-3 p-3 hover:bg-red-500 rounded-xl transition">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Logout
-            </a>
+            <a href="#" onclick="logout()"
+   class="flex items-center gap-3 p-3 hover:bg-red-500 rounded-xl">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    Logout
+</a>
         </li>
 
             </ul>
@@ -169,11 +170,11 @@
 
                 </button>
 
-                <div class="w-11 h-11 rounded-full bg-[#0A4174] text-white flex items-center justify-center font-bold">
-
-                    M
-
-                </div>
+                <a href="profile.html">
+    <div class="w-12 h-12 rounded-full bg-[#0A4174] flex items-center justify-center text-white font-bold hover:scale-105 transition cursor-pointer">
+        M
+    </div>
+</a>
 
             </div>
 
@@ -339,7 +340,9 @@
     </main>
 
 </div>
-
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
 </body>
 
 </html>

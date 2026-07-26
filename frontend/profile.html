@@ -90,10 +90,11 @@
         </li>
 
         <li class="pt-8 border-t border-white/20 mt-8">
-            <a href="login.html" class="flex items-center gap-3 p-3 hover:bg-red-500 rounded-xl transition">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Logout
-            </a>
+            <a href="#" onclick="logout()"
+   class="flex items-center gap-3 p-3 hover:bg-red-500 rounded-xl">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    Logout
+</a>
         </li>
 
             </ul>
@@ -132,23 +133,30 @@
 
                 <div class="flex flex-col items-center">
 
-                    <div
-                        class="w-32 h-32 rounded-full bg-[#0A4174] flex items-center justify-center text-white text-5xl font-bold">
+    <img
+        id="profileImage"
+        src="https://placehold.co/150x150/E5E7EB/374151?text=M"
+        alt="Profile Picture"
+        class="w-32 h-32 rounded-full object-cover border-4 border-[#0A4174] shadow-lg">
 
-                        M
+    <input
+        type="file"
+        id="imageInput"
+        accept="image/*"
+        class="hidden">
 
-                    </div>
+    <button
+        type="button"
+        onclick="document.getElementById('imageInput').click()"
+        class="mt-5 px-5 py-2 rounded-xl bg-[#0A4174] text-white hover:bg-[#001D39] transition">
 
-                    <button
-                        class="mt-5 px-5 py-2 rounded-xl bg-[#0A4174] text-white hover:bg-[#001D39] transition">
+        <i class="fa-solid fa-camera mr-2"></i>
 
-                        <i class="fa-solid fa-camera mr-2"></i>
+        Change Photo
 
-                        Change Photo
+    </button>
 
-                    </button>
-
-                </div>
+</div>
 
                 <!-- Form -->
 
@@ -330,7 +338,23 @@
     </main>
 
 </div>
+<script>
+const imageInput = document.getElementById("imageInput");
+const profileImage = document.getElementById("profileImage");
 
+imageInput.addEventListener("change", function () {
+
+    const file = this.files[0];
+
+    if (file) {
+        profileImage.src = URL.createObjectURL(file);
+    }
+
+});
+</script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
 </body>
 
 </html>
