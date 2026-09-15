@@ -133,7 +133,7 @@
 
             </div>
 
-            <button class="btn-primary px-6 py-3 rounded-xl">
+           <button id="addExpenseBtn" class="btn-primary px-6 py-3 rounded-xl">
 
                 <i class="fa-solid fa-plus mr-2"></i>
 
@@ -202,106 +202,8 @@
 
                         </thead>
 
-                        <tbody>
-
-                            <tr class="border-b">
-
-                                <td class="py-4">Groceries</td>
-                                <td>Food</td>
-                                <td class="text-red-600 font-semibold">₹2,500</td>
-                                <td>20 Jul 2026</td>
-
-                                <td>
-
-                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
-
-                                        Paid
-
-                                    </span>
-
-                                </td>
-
-                                <td class="space-x-3">
-
-                                    <button class="text-blue-600">
-
-                                        <i class="fa-solid fa-pen"></i>
-
-                                    </button>
-
-                                    <button class="text-red-600">
-
-                                        <i class="fa-solid fa-trash"></i>
-
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-                            <tr class="border-b">
-
-                                <td class="py-4">Electricity Bill</td>
-                                <td>Utilities</td>
-                                <td class="text-red-600 font-semibold">₹1,200</td>
-                                <td>18 Jul 2026</td>
-
-                                <td>
-
-                                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
-
-                                        Pending
-
-                                    </span>
-
-                                </td>
-
-                                <td class="space-x-3">
-
-                                    <button class="text-blue-600">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </button>
-
-                                    <button class="text-red-600">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td class="py-4">Movie Tickets</td>
-                                <td>Entertainment</td>
-                                <td class="text-red-600 font-semibold">₹800</td>
-                                <td>15 Jul 2026</td>
-
-                                <td>
-
-                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
-
-                                        Paid
-
-                                    </span>
-
-                                </td>
-
-                                <td class="space-x-3">
-
-                                    <button class="text-blue-600">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </button>
-
-                                    <button class="text-red-600">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-                        </tbody>
+                        <tbody id="expenseTableBody">
+</tbody>
 
                     </table>
 
@@ -316,7 +218,7 @@
 </div>
 <script src="js/api.js"></script>
 <script src="js/auth.js"></script>
-<script src="js/dashboard.js"></script>
+<script src="js/expenses.js"></script>
 </body>
 
 </html>
