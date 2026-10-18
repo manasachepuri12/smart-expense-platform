@@ -10,7 +10,8 @@ console.log("Expenses JS loaded");
 const addExpenseBtn = document.getElementById("addExpenseBtn");
 const expenseTableBody = document.getElementById("expenseTableBody");
 
-
+const expenseSearch = document.getElementById("expenseSearch");
+const categoryFilter = document.getElementById("categoryFilter");
 // ===============================
 // CREATE EXPENSE MODAL
 // ===============================
@@ -729,6 +730,7 @@ async function loadExpenses() {
             expenseTableBody.appendChild(row);
 
         });
+        filterExpenses();
 
     } catch (error) {
 
@@ -758,6 +760,7 @@ function formatDate(dateString) {
     });
 }
 loadExpenses();
+loadFilterCategories();
 // ===============================
 // DELETE EXPENSE
 // ===============================
@@ -967,3 +970,121 @@ async function editExpense(id) {
     }
 
 }
+// ===============================
+// LOAD CATEGORIES FOR FILTER
+// ===============================
+
+async function loadFilterCategories() {
+
+    try {
+
+        const response = await fetch(
+            `${BASE_URL}/expense-categories`,
+            {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${getToken()}`
+                }
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to load categories");
+        }
+
+        const categories = await response.json();
+
+        categoryFilter.innerHTML =
+            '<option value="">All Categories</option>';
+
+        categories.forEach(category => {
+
+            const option = document.createElement("option");
+
+            option.value = category.name;
+            option.textContent = category.name;
+
+            categoryFilter.appendChild(option);
+
+        });
+
+    } catch (error) {
+
+        console.error("Filter category loading error:", error);
+
+    }
+}
+// ===============================
+// SEARCH AND CATEGORY FILTER
+// ===============================
+
+function filterExpenses() {
+
+    const searchText = expenseSearch.value
+        .trim()
+        .toLowerCase();
+
+    const selectedCategory = categoryFilter.value;
+
+    const rows = expenseTableBody.querySelectorAll("tr");
+
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+
+        // Ignore the empty-state row
+        if (!row.querySelector("button")) {
+            return;
+        }
+
+        const title = row.cells[0].textContent.toLowerCase();
+        const category = row.cells[1].textContent.trim();
+
+        const matchesSearch = title.includes(searchText);
+
+        const matchesCategory =
+            selectedCategory === "" ||
+            category === selectedCategory;
+
+        const shouldShow =
+            matchesSearch && matchesCategory;
+
+        row.style.display = shouldShow ? "" : "none";
+
+        if (shouldShow) {
+            visibleCount++;
+        }
+
+    });
+
+    // Show a message when no expenses match
+    let noResultsRow = document.getElementById("noFilteredExpenses");
+
+    if (!noResultsRow) {
+
+        noResultsRow = document.createElement("tr");
+
+        noResultsRow.id = "noFilteredExpenses";
+
+        noResultsRow.innerHTML = `
+            <td colspan="6"
+                class="text-center py-10 text-slate-500">
+                No expenses match your search.
+            </td>
+        `;
+
+        expenseTableBody.appendChild(noResultsRow);
+
+    }
+
+    noResultsRow.style.display =
+        visibleCount === 0 ? "" : "none";
+}
+
+
+// Search as the user types
+expenseSearch.addEventListener("input", filterExpenses);
+
+
+// Filter when a category is selected
+categoryFilter.addEventListener("change", filterExpenses);
