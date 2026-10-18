@@ -16,4 +16,5 @@ public interface BudgetService {
     BudgetResponseDTO updateBudget(Long id, BudgetRequestDTO request);
 
     void deleteBudget(Long id);
+
 }

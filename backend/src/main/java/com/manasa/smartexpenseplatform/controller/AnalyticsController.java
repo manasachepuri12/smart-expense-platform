@@ -40,4 +40,21 @@ public class AnalyticsController {
     public List<BudgetAnalyticsDTO> getBudgetAnalytics() {
         return analyticsService.getBudgetAnalytics();
     }
+
+@GetMapping("/budget/monthly")
+@Operation(
+        summary = "Get monthly budget analytics",
+        description = "Retrieves category-wise budget, spending, remaining amount, percentage used, and status for a selected month and year."
+)
+@ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Monthly budget analytics retrieved successfully"),
+        @ApiResponse(responseCode = "401", description = "Unauthorized")
+})
+public List<BudgetAnalyticsDTO> getMonthlyBudgetAnalytics(
+        @org.springframework.web.bind.annotation.RequestParam Integer month,
+        @org.springframework.web.bind.annotation.RequestParam Integer year) {
+
+    return analyticsService.getBudgetAnalytics(month, year);
+}
+
 }

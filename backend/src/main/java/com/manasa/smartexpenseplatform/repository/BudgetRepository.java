@@ -35,4 +35,6 @@ public interface BudgetRepository extends JpaRepository<Budget, Long> {
         @Param("month") Integer month,
         @Param("year") Integer year
     );
+
+
 }

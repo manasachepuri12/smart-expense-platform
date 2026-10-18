@@ -47,5 +47,21 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
         @Param("month") Integer month,
         @Param("year") Integer year
     );
+
+@Query("""
+    SELECT COALESCE(SUM(e.amount), 0)
+    FROM Expense e
+    WHERE e.user = :user
+      AND e.expenseCategory = :category
+      AND MONTH(e.expenseDate) = :month
+      AND YEAR(e.expenseDate) = :year
+    """)
+BigDecimal getTotalExpenseByUserAndCategoryAndMonth(
+    @Param("user") User user,
+    @Param("category") ExpenseCategory category,
+    @Param("month") Integer month,
+    @Param("year") Integer year
+);
+
             
 }

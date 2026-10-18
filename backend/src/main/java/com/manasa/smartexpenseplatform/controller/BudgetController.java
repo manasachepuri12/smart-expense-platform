@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-
 @RestController
 @RequestMapping("/api/budgets")
 @Tag(
@@ -102,4 +101,7 @@ public class BudgetController {
     public void deleteBudget(@PathVariable Long id) {
         budgetService.deleteBudget(id);
     }
+
+
+
 }

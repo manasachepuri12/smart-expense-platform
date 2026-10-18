@@ -100,4 +100,67 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 
         return analyticsList;
     }
+
+@Override
+public List<BudgetAnalyticsDTO> getBudgetAnalytics(
+        Integer month,
+        Integer year) {
+
+    Authentication authentication =
+            SecurityContextHolder.getContext().getAuthentication();
+
+    String email = authentication.getName();
+
+    User user = userRepository.findByEmail(email)
+            .orElseThrow(() ->
+                    new ResourceNotFoundException("User not found"));
+
+    List<Budget> budgets =
+            budgetRepository.findByUserAndMonthAndYear(
+                    user, month, year);
+
+    List<BudgetAnalyticsDTO> analyticsList = new ArrayList<>();
+
+    for (Budget budget : budgets) {
+
+        BigDecimal spent =
+                expenseRepository.getTotalExpenseByUserAndCategoryAndMonth(
+                        user,
+                        budget.getExpenseCategory(),
+                        month,
+                        year);
+
+        BigDecimal remaining =
+                budget.getBudgetAmount().subtract(spent);
+
+        double percentageUsed = 0.0;
+
+        if (budget.getBudgetAmount().compareTo(BigDecimal.ZERO) > 0) {
+            percentageUsed = spent
+                    .multiply(BigDecimal.valueOf(100))
+                    .divide(
+                            budget.getBudgetAmount(),
+                            2,
+                            RoundingMode.HALF_UP)
+                    .doubleValue();
+        }
+
+        String status = spent.compareTo(budget.getBudgetAmount()) > 0
+                ? "Exceeded"
+                : "Within Budget";
+
+        analyticsList.add(
+                BudgetAnalyticsDTO.builder()
+                        .category(budget.getExpenseCategory().getName())
+                        .budget(budget.getBudgetAmount())
+                        .spent(spent)
+                        .remaining(remaining)
+                        .percentageUsed(percentageUsed)
+                        .status(status)
+                        .build());
+    }
+
+    return analyticsList;
+}
+
 }

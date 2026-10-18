@@ -138,22 +138,28 @@
 
                 <div class="card p-6">
                     <p class="text-slate-500">Total Income</p>
-                    <h2 class="text-3xl font-bold text-green-600 mt-3">₹40,000</h2>
+                    
+<h2 id="totalIncome"
+    class="text-3xl font-bold text-green-600 mt-3">₹0.00</h2>
+
                 </div>
 
                 <div class="card p-6">
                     <p class="text-slate-500">Total Expense</p>
-                    <h2 class="text-3xl font-bold text-red-600 mt-3">₹15,000</h2>
+                    <h2 id="totalExpense"
+    class="text-3xl font-bold text-red-600 mt-3">₹0.00</h2>
                 </div>
 
                 <div class="card p-6">
                     <p class="text-slate-500">Savings</p>
-                    <h2 class="text-3xl font-bold text-blue-700 mt-3">₹25,000</h2>
+                    <h2 id="totalSavings"
+    class="text-3xl font-bold text-blue-700 mt-3">₹0.00</h2>
                 </div>
 
                 <div class="card p-6">
                     <p class="text-slate-500">Savings Rate</p>
-                    <h2 class="text-3xl font-bold text-orange-500 mt-3">62%</h2>
+                    <h2 id="savingsRate"
+    class="text-3xl font-bold text-orange-500 mt-3">0%</h2>
                 </div>
 
             </div>
@@ -207,6 +213,52 @@
             </div>
 
         </section>
+
+<div class="card p-6 mb-8 flex flex-wrap items-end gap-4">
+    <div>
+        <label for="analyticsMonth"
+               class="block text-sm font-medium text-slate-600 mb-2">
+            Month
+        </label>
+        <select id="analyticsMonth"
+                class="border border-slate-300 rounded-lg px-4 py-2">
+            <option value="all">All months</option>
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="analyticsYear"
+               class="block text-sm font-medium text-slate-600 mb-2">
+            Year
+        </label>
+        <select id="analyticsYear"
+                class="border border-slate-300 rounded-lg px-4 py-2">
+        </select>
+    </div>
+
+    <button id="applyAnalyticsFilter"
+            class="bg-[#0A4174] text-white px-5 py-2 rounded-lg hover:bg-[#001D39]">
+        Apply Filter
+    </button>
+
+    <button id="resetAnalyticsFilter"
+            class="border border-slate-300 px-5 py-2 rounded-lg hover:bg-slate-50">
+        Reset
+    </button>
+</div>
+
 
     </main>
 
@@ -291,7 +343,7 @@ new Chart(document.getElementById("lineChart"),{
 </script>
 <script src="js/api.js"></script>
 <script src="js/auth.js"></script>
-<script src="js/dashboard.js"></script>
+<script src="js/analytics.js"></script>
 </body>
 
 </html>
