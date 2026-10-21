@@ -162,6 +162,79 @@
                     </div>
 
                 </div>
+                
+<!-- Manage Expense Categories -->
+<div class="card p-6 mb-8">
+
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+        <div>
+            <h3 class="text-xl font-bold text-slate-800">
+                Manage Categories
+            </h3>
+            <p class="text-sm text-slate-500 mt-1">
+                Add and rename your custom expense categories.
+            </p>
+        </div>
+
+        <button
+            id="manageCategoriesBtn"
+            type="button"
+            class="btn-primary px-5 py-3 rounded-xl">
+            <i class="fa-solid fa-tags mr-2"></i>
+            Manage Categories
+        </button>
+    </div>
+
+    <div id="categoryManager" class="hidden border-t pt-5">
+
+        
+<form id="categoryForm"
+      class="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_auto] gap-3 mb-5 items-center">
+
+    <input
+        type="text"
+        id="customCategoryName"
+        maxlength="100"
+        required
+        placeholder="Enter category name"
+        class="w-full min-w-0 rounded-xl border border-gray-300 px-4 py-3">
+
+    <button
+        type="submit"
+        id="saveCategoryBtn"
+        class="btn-primary px-6 py-3 rounded-xl whitespace-nowrap">
+        Add Category
+    </button>
+
+    <button
+        type="button"
+        id="cancelCategoryEditBtn"
+        class="hidden px-5 py-3 rounded-xl border border-gray-300 whitespace-nowrap">
+        Cancel Edit
+    </button>
+
+</form>
+
+        <p id="categoryMessage"
+           class="hidden rounded-lg p-3 mb-4 text-sm"
+           role="status"></p>
+
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="border-b text-left">
+                        <th class="py-3">Category Name</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="categoryManagerBody"></tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
 
                 <!-- Expense Table -->
 

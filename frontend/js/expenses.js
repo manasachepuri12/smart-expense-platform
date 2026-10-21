@@ -1088,3 +1088,262 @@ expenseSearch.addEventListener("input", filterExpenses);
 
 // Filter when a category is selected
 categoryFilter.addEventListener("change", filterExpenses);
+
+/* ==================================
+   CUSTOM EXPENSE CATEGORY MANAGEMENT
+================================== */
+
+const manageCategoriesBtn =
+    document.getElementById("manageCategoriesBtn");
+
+const categoryManager =
+    document.getElementById("categoryManager");
+
+const categoryForm =
+    document.getElementById("categoryForm");
+
+const customCategoryName =
+    document.getElementById("customCategoryName");
+
+const saveCategoryBtn =
+    document.getElementById("saveCategoryBtn");
+
+const cancelCategoryEditBtn =
+    document.getElementById("cancelCategoryEditBtn");
+
+const categoryManagerBody =
+    document.getElementById("categoryManagerBody");
+
+const categoryMessage =
+    document.getElementById("categoryMessage");
+
+let editingCategoryId = null;
+let managedCategories = [];
+
+manageCategoriesBtn.addEventListener("click", async () => {
+    categoryManager.classList.toggle("hidden");
+
+    if (!categoryManager.classList.contains("hidden")) {
+        await loadManagedCategories();
+    }
+});
+
+function showCategoryMessage(message, isError = false) {
+    categoryMessage.textContent = message;
+    categoryMessage.classList.remove(
+        "hidden",
+        "bg-red-100",
+        "text-red-700",
+        "bg-green-100",
+        "text-green-700"
+    );
+
+    categoryMessage.classList.add(
+        isError ? "bg-red-100" : "bg-green-100",
+        isError ? "text-red-700" : "text-green-700"
+    );
+}
+
+
+
+async function categoryApiRequest(url, options = {}) {
+    const response = await fetch(url, {
+        ...options,
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${getToken()}`,
+            ...options.headers
+        }
+    });
+
+    const responseText = await response.text();
+
+    let data = null;
+
+    if (responseText) {
+        try {
+            data = JSON.parse(responseText);
+        } catch {
+            data = { message: responseText };
+        }
+    }
+
+    if (!response.ok) {
+        // Show a friendly message for duplicate category names.
+        if (response.status === 409) {
+            throw new Error(
+                data?.message ||
+                "A category with this name already exists."
+            );
+        }
+
+        throw new Error(
+            data?.message ||
+            data?.detail ||
+            data?.error ||
+            `Request failed (${response.status})`
+        );
+    }
+
+    return data;
+}
+
+
+async function loadManagedCategories() {
+    try {
+        managedCategories = await categoryApiRequest(
+            `${BASE_URL}/expense-categories`,
+            { method: "GET" }
+        );
+
+        renderManagedCategories();
+
+        // Refresh the existing expense form and filter options.
+        await loadCategories();
+        await loadFilterCategories();
+
+    } catch (error) {
+        console.error("Category loading error:", error);
+        showCategoryMessage(error.message, true);
+    }
+}
+
+function renderManagedCategories() {
+    categoryManagerBody.innerHTML = "";
+
+    if (!managedCategories.length) {
+        categoryManagerBody.innerHTML = `
+            <tr>
+                <td colspan="3" class="py-5 text-slate-500">
+                    No categories found.
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    managedCategories.forEach(category => {
+        const row = document.createElement("tr");
+        row.className = "border-b";
+
+        const nameCell = document.createElement("td");
+        nameCell.className = "py-4 font-medium";
+        nameCell.textContent = category.name;
+
+        const typeCell = document.createElement("td");
+        typeCell.className = "py-4 text-slate-500";
+        typeCell.textContent = "Category";
+
+        const actionsCell = document.createElement("td");
+        actionsCell.className = "py-3";
+
+        const editButton = document.createElement("button");
+        editButton.type = "button";
+        editButton.className = "text-blue-600 mr-4";
+        editButton.innerHTML = '<i class="fa-solid fa-pen"></i>';
+        editButton.title = "Rename category";
+        editButton.addEventListener("click", () => {
+            startCategoryEdit(category);
+        });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.className = "text-red-600";
+        deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+        deleteButton.title = "Delete category";
+        deleteButton.addEventListener("click", () => {
+            deleteManagedCategory(category);
+        });
+
+        actionsCell.append(editButton, deleteButton);
+        row.append(nameCell, typeCell, actionsCell);
+        categoryManagerBody.appendChild(row);
+    });
+}
+
+categoryForm.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const name = customCategoryName.value.trim();
+
+    if (!name) {
+        showCategoryMessage("Enter a category name.", true);
+        return;
+    }
+
+    saveCategoryBtn.disabled = true;
+
+    try {
+        const editing = editingCategoryId !== null;
+
+        await categoryApiRequest(
+            editing
+                ? `${BASE_URL}/expense-categories/${editingCategoryId}`
+                : `${BASE_URL}/expense-categories`,
+            {
+                method: editing ? "PUT" : "POST",
+                body: JSON.stringify({ name })
+            }
+        );
+
+        resetCategoryForm();
+
+showCategoryMessage(
+    editing
+        ? "Category renamed successfully."
+        : "Category created successfully."
+);
+
+await loadManagedCategories();
+
+    } catch (error) {
+        showCategoryMessage(error.message, true);
+    } finally {
+        saveCategoryBtn.disabled = false;
+    }
+});
+
+function startCategoryEdit(category) {
+    editingCategoryId = category.id;
+    customCategoryName.value = category.name;
+
+    saveCategoryBtn.textContent = "Update Category";
+    cancelCategoryEditBtn.classList.remove("hidden");
+    customCategoryName.focus();
+}
+
+function resetCategoryForm() {
+    editingCategoryId = null;
+    categoryForm.reset();
+
+    saveCategoryBtn.textContent = "Add Category";
+    cancelCategoryEditBtn.classList.add("hidden");
+}
+
+cancelCategoryEditBtn.addEventListener("click", resetCategoryForm);
+
+async function deleteManagedCategory(category) {
+    const confirmed = confirm(
+        `Delete category "${category.name}"?`
+    );
+
+    if (!confirmed) return;
+
+    try {
+        await categoryApiRequest(
+            `${BASE_URL}/expense-categories/${category.id}`,
+            { method: "DELETE" }
+        );
+
+        if (editingCategoryId === category.id) {
+            resetCategoryForm();
+        }
+
+        await loadManagedCategories();
+
+        showCategoryMessage("Category deleted successfully.");
+
+    } catch (error) {
+        showCategoryMessage(error.message, true);
+    }
+}
