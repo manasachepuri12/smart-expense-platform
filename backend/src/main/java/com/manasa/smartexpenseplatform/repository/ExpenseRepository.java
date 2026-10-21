@@ -63,5 +63,5 @@ BigDecimal getTotalExpenseByUserAndCategoryAndMonth(
     @Param("year") Integer year
 );
 
-            
+boolean existsByExpenseCategory(ExpenseCategory expenseCategory);
 }

@@ -1,6 +1,7 @@
 package com.manasa.smartexpenseplatform.repository;
 
 import com.manasa.smartexpenseplatform.entity.Budget;
+import com.manasa.smartexpenseplatform.entity.ExpenseCategory;
 import com.manasa.smartexpenseplatform.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.math.BigDecimal;
@@ -36,5 +37,5 @@ public interface BudgetRepository extends JpaRepository<Budget, Long> {
         @Param("year") Integer year
     );
 
-
+boolean existsByExpenseCategory(ExpenseCategory expenseCategory);
 }
