@@ -1,8 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,336 +13,343 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="css/styles.css">
-
 </head>
 
 <body class="font-[Inter] bg-slate-100">
 
-<div class="flex min-h-screen">
+    <div class="flex min-h-screen">
 
-    <!-- ================= SIDEBAR ================= -->
+        <!-- SIDEBAR -->
+        <aside class="w-72 bg-[#001D39] text-white flex flex-col shrink-0">
 
-    <aside class="w-72 bg-[#001D39] text-white flex flex-col">
+            <div class="p-8 border-b border-white/20">
+                <h1 class="text-3xl font-bold">
+                    <i class="fa-solid fa-wallet mr-2"></i>
+                    Smart Expense
+                </h1>
+            </div>
 
-        <div class="p-8 border-b border-white/20">
+            <nav class="flex-1 p-6">
+                <ul class="space-y-4">
 
-            <h1 class="text-3xl font-bold">
+                    <li>
+                        <a href="dashboard.html"
+                            class="flex items-center gap-3 bg-white/10 rounded-xl p-3">
+                            <i class="fa-solid fa-house"></i>
+                            Dashboard
+                        </a>
+                    </li>
 
-                <i class="fa-solid fa-wallet mr-2"></i>
+                    <li>
+                        <a href="expenses.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-receipt"></i>
+                            Expenses
+                        </a>
+                    </li>
 
-                Smart Expense
+                    <li>
+                        <a href="income.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-money-bill-trend-up"></i>
+                            Income
+                        </a>
+                    </li>
 
-            </h1>
+                    <li>
+                        <a href="budget.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-piggy-bank"></i>
+                            Budget
+                        </a>
+                    </li>
 
-        </div>
+                    <li>
+                        <a href="analytics.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-chart-line"></i>
+                            Analytics
+                        </a>
+                    </li>
 
-        <nav class="flex-1 p-6">
+                    <li>
+                        <a href="reports.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-file-lines"></i>
+                            Reports
+                        </a>
+                    </li>
 
-            <ul class="space-y-4">
-
-                <li>
-                    <a href="dashboard.html"
-   class="flex items-center gap-3 bg-white/10 rounded-xl p-3">
-
-                        <i class="fa-solid fa-house"></i>
-
-                        Dashboard
-
-                    </a>
-                </li>
-
-                <li>
-                    <a href="expenses.html"
-                        class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-
-                        <i class="fa-solid fa-receipt"></i>
-
-                        Expenses
-
-                    </a>
-                </li>
-
-                <li>
-                    <a href="income.html"
-                        class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-
-                        <i class="fa-solid fa-money-bill-trend-up"></i>
-
-                        Income
-
-                    </a>
-                </li>
-
-                <li>
-                    <a href="budget.html"
-                        class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-
-                        <i class="fa-solid fa-piggy-bank"></i>
-
-                        Budget
-
-                    </a>
-                </li>
-
-                <li>
-                    <a href="analytics.html"
-                        class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-
-                        <i class="fa-solid fa-chart-line"></i>
-
-                        Analytics
-
-                    </a>
-                </li>
-
-                <li>
-                    <a href="reports.html"
-                        class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-
-                        <i class="fa-solid fa-file-lines"></i>
-
-                        Reports
-
-                    </a>
-                </li>
-                <li>
-                    <a href="profile.html"
-                        class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-
-                        <i class="fa-solid fa-user"></i>
-
-                             Profile
-
-                    </a>
-                </li>
+                    <li>
+                        <a href="profile.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-user"></i>
+                            Profile
+                        </a>
+                    </li>
 
                     <li class="pt-8 border-t border-white/20 mt-8">
-            <a href="#" onclick="logout()"
-   class="flex items-center gap-3 p-3 hover:bg-red-500 rounded-xl">
-    <i class="fa-solid fa-right-from-bracket"></i>
-    Logout
-</a>
-        </li>
+                        <a href="#" onclick="logout(); return false;"
+                            class="flex items-center gap-3 p-3 hover:bg-red-500 rounded-xl">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Logout
+                        </a>
+                    </li>
 
-            </ul>
+                </ul>
+            </nav>
 
-        </nav>
+        </aside>
 
-    </aside>
+        <!-- MAIN CONTENT -->
+        <main class="flex-1 min-w-0">
 
-    <!-- ================= MAIN CONTENT ================= -->
+            <!-- HEADER -->
+            <header
+                class="bg-white shadow-sm px-6 md:px-10 py-5 flex justify-between items-center gap-4">
 
-    <main class="flex-1">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-800">
+                        Dashboard
+                    </h2>
 
-        <!-- Navbar -->
+                    <p class="text-slate-500">
+                        Welcome back! Here's your financial overview.
+                    </p>
+                </div>
 
-        <header class="bg-white shadow-sm px-10 py-5 flex justify-between items-center">
+                <a href="profile.html"
+                    id="dashboardProfileLink"
+                    class="shrink-0"
+                    aria-label="Open profile">
 
-            <div>
+                    <div id="dashboardAvatar"
+                        class="w-12 h-12 rounded-full bg-[#0A4174] flex items-center justify-center text-white font-bold hover:scale-105 transition cursor-pointer">
+                        M
+                    </div>
 
-                <h2 class="text-3xl font-bold text-slate-800">
+                </a>
 
-                    Dashboard
+            </header>
 
-                </h2>
+            <!-- DASHBOARD CONTENT -->
+            <section class="p-6 md:p-10">
 
-                <p class="text-slate-500">
+                <!-- FINANCIAL SUMMARY CARDS -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
 
-                    Welcome back!
+                    <!-- ALL-TIME BALANCE -->
+                    <div class="card p-6">
 
-                </p>
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-slate-500 font-medium">
+                                Total Balance
+                            </h4>
 
-            </div>
+                            <div class="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center">
+                                <i class="fa-solid fa-wallet text-green-600 text-xl"></i>
+                            </div>
+                        </div>
 
-            <div class="flex items-center gap-4">
+                        <h2 id="totalBalance"
+                            class="text-3xl font-bold mt-4 text-green-600">
+                            ₹0.00
+                        </h2>
 
-                <button class="relative">
+                        <p class="text-sm text-slate-500 mt-2">
+                            All-time income minus expenses
+                        </p>
 
-                    <i class="fa-solid fa-bell text-2xl text-slate-600"></i>
+                    </div>
 
-                    <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+                    <!-- CURRENT-MONTH INCOME -->
+                    <div class="card p-6">
 
-                </button>
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-slate-500 font-medium">
+                                Total Income This Month
+                            </h4>
 
-                <a href="profile.html">
-    <div class="w-12 h-12 rounded-full bg-[#0A4174] flex items-center justify-center text-white font-bold hover:scale-105 transition cursor-pointer">
-        M
+                            <div class="w-11 h-11 rounded-xl bg-blue-100 flex items-center justify-center">
+                                <i class="fa-solid fa-arrow-trend-up text-blue-700 text-xl"></i>
+                            </div>
+                        </div>
+
+                        <h2 id="dashboardIncome"
+                            class="text-3xl font-bold mt-4 text-blue-700">
+                            ₹0.00
+                        </h2>
+
+                        <p class="text-sm text-slate-500 mt-2">
+                            Income recorded during the current month
+                        </p>
+
+                    </div>
+
+                    <!-- CURRENT-MONTH EXPENSES -->
+                    <div class="card p-6">
+
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-slate-500 font-medium">
+                                Total Expenses This Month
+                            </h4>
+
+                            <div class="w-11 h-11 rounded-xl bg-red-100 flex items-center justify-center">
+                                <i class="fa-solid fa-arrow-trend-down text-red-600 text-xl"></i>
+                            </div>
+                        </div>
+
+                        <h2 id="dashboardExpenses"
+                            class="text-3xl font-bold mt-4 text-red-600">
+                            ₹0.00
+                        </h2>
+
+                        <p class="text-sm text-slate-500 mt-2">
+                            Expenses recorded during the current month
+                        </p>
+
+                    </div>
+
+                    <!-- CURRENT-MONTH BUDGET REMAINING -->
+                    <div class="card p-6">
+
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-slate-500 font-medium">
+                                Budget Left
+                            </h4>
+
+                            <div class="w-11 h-11 rounded-xl bg-orange-100 flex items-center justify-center">
+                                <i class="fa-solid fa-piggy-bank text-orange-500 text-xl"></i>
+                            </div>
+                        </div>
+
+                        <h2 id="dashboardBudgetLeft"
+                            class="text-3xl font-bold mt-4 text-orange-500">
+                            ₹0.00
+                        </h2>
+
+                        <p class="text-sm text-slate-500 mt-2">
+                            Remaining budget for this month
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- QUICK ACTIONS -->
+                <div class="mt-10">
+
+                    <h3 class="text-2xl font-bold mb-5 text-slate-800">
+                        Quick Actions
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+                        <a href="expenses.html"
+                            class="btn-primary px-6 py-4 rounded-xl text-center transition hover:opacity-90">
+                            <i class="fa-solid fa-plus mr-2"></i>
+                            Add Expense
+                        </a>
+
+                        <a href="income.html"
+                            class="btn-primary px-6 py-4 rounded-xl text-center transition hover:opacity-90">
+                            <i class="fa-solid fa-plus mr-2"></i>
+                            Add Income
+                        </a>
+
+                        <a href="budget.html"
+                            class="btn-primary px-6 py-4 rounded-xl text-center transition hover:opacity-90">
+                            <i class="fa-solid fa-piggy-bank mr-2"></i>
+                            Set Budget
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- RECENT TRANSACTIONS -->
+                <div class="card mt-10 p-6 md:p-8">
+
+                    <div class="flex justify-between items-center flex-wrap gap-3 mb-6">
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">
+                                Recent Transactions
+                            </h3>
+
+                            <p class="text-slate-500 mt-1">
+                                Your latest income and expenses
+                            </p>
+                        </div>
+
+                        <!-- <div class="flex gap-3">
+                            <a href="expenses.html"
+                                class="text-sm font-semibold text-[#0A4174] hover:underline">
+                                Expenses
+                            </a>
+
+                            <a href="income.html"
+                                class="text-sm font-semibold text-[#0A4174] hover:underline">
+                                Income
+                            </a>
+                        </div> -->
+
+                    </div>
+
+                    <div class="overflow-x-auto">
+
+                        <table class="w-full min-w-[600px]">
+
+                            <thead>
+                                <tr class="border-b text-left text-slate-500">
+                                    <th class="py-4 pr-4">Title</th>
+                                    <th class="pr-4">Category</th>
+                                    <th class="pr-4">Amount</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="recentTransactionsBody">
+
+                                <tr>
+                                    <td colspan="4"
+                                        class="py-8 text-center text-slate-500">
+                                        Loading transactions...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <!-- DASHBOARD STATUS MESSAGE -->
+                <p id="dashboardMessage"
+                    class="mt-5 text-sm text-slate-500"
+                    role="status"
+                    aria-live="polite"></p>
+
+            </section>
+
+        </main>
+
     </div>
-</a>
 
-            </div>
+    <!-- JAVASCRIPT -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
 
-        </header>
-
-        <!-- Dashboard -->
-
-        <section class="p-10">
-
-            <!-- Summary Cards -->
-
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-
-                <div class="card p-6">
-
-                    <h4 class="text-slate-500">Total Balance</h4>
-
-                    <h2 class="text-3xl font-bold mt-3 text-green-600">
-
-                        ₹25,000
-
-                    </h2>
-
-                </div>
-
-                <div class="card p-6">
-
-                    <h4 class="text-slate-500">Income</h4>
-
-                    <h2 class="text-3xl font-bold mt-3 text-blue-700">
-
-                        ₹40,000
-
-                    </h2>
-
-                </div>
-
-                <div class="card p-6">
-
-                    <h4 class="text-slate-500">Expenses</h4>
-
-                    <h2 class="text-3xl font-bold mt-3 text-red-600">
-
-                        ₹15,000
-
-                    </h2>
-
-                </div>
-
-                <div class="card p-6">
-
-                    <h4 class="text-slate-500">Budget Left</h4>
-
-                    <h2 class="text-3xl font-bold mt-3 text-orange-500">
-
-                        ₹10,000
-
-                    </h2>
-
-                </div>
-
-            </div>
-
-            <!-- Quick Actions -->
-
-            <div class="mt-10">
-
-                <h3 class="text-2xl font-bold mb-5">
-
-                    Quick Actions
-
-                </h3>
-
-                <div class="flex gap-4 flex-wrap">
-
-                    <button class="btn-primary px-6 py-3 rounded-xl">
-
-                        + Add Expense
-
-                    </button>
-
-                    <button class="btn-primary px-6 py-3 rounded-xl">
-
-                        + Add Income
-
-                    </button>
-
-                    <button class="btn-primary px-6 py-3 rounded-xl">
-
-                        Set Budget
-
-                    </button>
-
-                </div>
-
-            </div>
-
-            <!-- Recent Transactions -->
-
-            <div class="card mt-10 p-8">
-
-                <h3 class="text-2xl font-bold mb-6">
-
-                    Recent Transactions
-
-                </h3>
-
-                <table class="w-full">
-
-                    <thead>
-
-                        <tr class="border-b">
-
-                            <th class="text-left py-3">Title</th>
-
-                            <th class="text-left">Category</th>
-
-                            <th class="text-left">Amount</th>
-
-                            <th class="text-left">Date</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr class="border-b">
-
-                            <td class="py-4">Groceries</td>
-                            <td>Food</td>
-                            <td class="text-red-600">- ₹2,500</td>
-                            <td>20 Jul 2026</td>
-
-                        </tr>
-
-                        <tr class="border-b">
-
-                            <td class="py-4">Salary</td>
-                            <td>Income</td>
-                            <td class="text-green-600">+ ₹40,000</td>
-                            <td>18 Jul 2026</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td class="py-4">Electricity Bill</td>
-                            <td>Utilities</td>
-                            <td class="text-red-600">- ₹1,200</td>
-                            <td>16 Jul 2026</td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-    </main>
-
-</div>
-<script src="js/api.js"></script>
-<script src="js/auth.js"></script>
-<script src="js/dashboard.js"></script>
 </body>
 
 </html>

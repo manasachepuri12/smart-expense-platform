@@ -25,6 +25,7 @@ public class IncomeCategoryMapper {
         return IncomeCategoryResponseDTO.builder()
                 .id(category.getId())
                 .name(category.getName())
+                .isDefault(category.getIsDefault())
                 .build();
     }
 }

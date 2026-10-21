@@ -427,3 +427,259 @@ async function initializeIncomePage() {
 }
 
 initializeIncomePage();
+
+/* ==========================================
+   CUSTOM INCOME CATEGORY MANAGEMENT
+   ========================================== */
+
+const manageCategoriesBtn = document.getElementById("manageCategoriesBtn");
+const categoryManager = document.getElementById("categoryManager");
+const closeCategoryManagerBtn = document.getElementById("closeCategoryManager");
+const incomeCategoryForm = document.getElementById("incomeCategoryForm");
+const customIncomeCategoryName = document.getElementById("customIncomeCategoryName");
+const saveIncomeCategoryBtn = document.getElementById("saveIncomeCategoryBtn");
+const cancelIncomeCategoryEditBtn = document.getElementById("cancelIncomeCategoryEditBtn");
+const incomeCategoryMessage = document.getElementById("incomeCategoryMessage");
+const incomeCategoryTableBody = document.getElementById("incomeCategoryTableBody");
+
+let managedIncomeCategories = [];
+
+function showIncomeCategoryMessage(message, type = "success") {
+    incomeCategoryMessage.textContent = message;
+    incomeCategoryMessage.className =
+        `text-sm mb-4 ${type === "error" ? "text-red-600" : "text-green-600"}`;
+}
+
+function resetIncomeCategoryForm() {
+    incomeCategoryForm.reset();
+    delete incomeCategoryForm.dataset.editingId;
+
+    saveIncomeCategoryBtn.innerHTML =
+        '<i class="fa-solid fa-plus mr-2"></i> Add Category';
+
+    cancelIncomeCategoryEditBtn.classList.add("hidden");
+}
+
+async function incomeCategoryApiRequest(url, options = {}) {
+    const response = await fetch(url, {
+        ...options,
+        headers: {
+            Authorization: `Bearer ${getToken()}`,
+            ...(options.body ? { "Content-Type": "application/json" } : {}),
+            ...options.headers
+        }
+    });
+
+    const responseText = await response.text();
+    let result = null;
+
+    if (responseText) {
+        try {
+            result = JSON.parse(responseText);
+        } catch {
+            result = { message: responseText };
+        }
+    }
+
+    if (!response.ok) {
+        throw new Error(
+            result?.message ||
+            result?.error ||
+            `Request failed (${response.status})`
+        );
+    }
+
+    return result;
+}
+
+async function loadManagedIncomeCategories() {
+    managedIncomeCategories = await incomeCategoryApiRequest(
+        `${BASE_URL}/income-categories`
+    );
+
+    renderManagedIncomeCategories();
+}
+
+function renderManagedIncomeCategories() {
+    incomeCategoryTableBody.innerHTML = "";
+
+    if (!managedIncomeCategories.length) {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+
+        cell.colSpan = 3;
+        cell.className = "py-6 text-center text-slate-500";
+        cell.textContent = "No income categories found.";
+
+        row.appendChild(cell);
+        incomeCategoryTableBody.appendChild(row);
+        return;
+    }
+
+    managedIncomeCategories.forEach(category => {
+        const row = document.createElement("tr");
+        row.className = "border-b hover:bg-slate-50";
+
+        const nameCell = document.createElement("td");
+        nameCell.className = "py-4 font-medium";
+        nameCell.textContent = category.name;
+
+        const typeCell = document.createElement("td");
+        typeCell.className = "py-4";
+
+        const isDefault = category.isDefault === true;
+        typeCell.textContent = isDefault ? "Default" : "Custom";
+
+        const actionsCell = document.createElement("td");
+        actionsCell.className = "py-4 whitespace-nowrap space-x-3";
+
+        if (!isDefault) {
+            const editButton = document.createElement("button");
+            editButton.type = "button";
+            editButton.className = "text-blue-600 hover:text-blue-800";
+            editButton.textContent = "Edit";
+            editButton.addEventListener("click", () => {
+                customIncomeCategoryName.value = category.name;
+                incomeCategoryForm.dataset.editingId = category.id;
+
+                saveIncomeCategoryBtn.innerHTML =
+                    '<i class="fa-solid fa-floppy-disk mr-2"></i> Update Category';
+
+                cancelIncomeCategoryEditBtn.classList.remove("hidden");
+                showIncomeCategoryMessage("Editing: " + category.name);
+                customIncomeCategoryName.focus();
+            });
+
+            const deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.className = "text-red-600 hover:text-red-800";
+            deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", () => {
+                deleteIncomeCategory(category);
+            });
+
+            actionsCell.append(editButton, deleteButton);
+        } else {
+            const protectedText = document.createElement("span");
+            protectedText.className = "text-slate-400 text-sm";
+            protectedText.textContent = "Protected";
+            actionsCell.appendChild(protectedText);
+        }
+
+        row.append(nameCell, typeCell, actionsCell);
+        incomeCategoryTableBody.appendChild(row);
+    });
+}
+
+manageCategoriesBtn.addEventListener("click", async () => {
+    categoryManager.classList.remove("hidden");
+    showIncomeCategoryMessage("");
+
+    try {
+        await loadManagedIncomeCategories();
+    } catch (error) {
+        console.error("Income category loading error:", error);
+        showIncomeCategoryMessage(error.message, "error");
+    }
+});
+
+closeCategoryManagerBtn.addEventListener("click", () => {
+    categoryManager.classList.add("hidden");
+    resetIncomeCategoryForm();
+    showIncomeCategoryMessage("");
+});
+
+cancelIncomeCategoryEditBtn.addEventListener("click", () => {
+    resetIncomeCategoryForm();
+    showIncomeCategoryMessage("Edit cancelled.");
+});
+
+incomeCategoryForm.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const name = customIncomeCategoryName.value.trim();
+    const editingId = incomeCategoryForm.dataset.editingId;
+
+    if (!name) {
+        showIncomeCategoryMessage("Please enter a category name.", "error");
+        return;
+    }
+
+    // Friendly client-side duplicate check; the backend also validates duplicates.
+    const duplicate = managedIncomeCategories.some(category =>
+        category.name.toLowerCase() === name.toLowerCase() &&
+        String(category.id) !== String(editingId || "")
+    );
+
+    if (duplicate) {
+        showIncomeCategoryMessage(
+            "A category with this name already exists.",
+            "error"
+        );
+        return;
+    }
+
+    saveIncomeCategoryBtn.disabled = true;
+
+    try {
+        const url = editingId
+            ? `${BASE_URL}/income-categories/${editingId}`
+            : `${BASE_URL}/income-categories`;
+
+        await incomeCategoryApiRequest(url, {
+            method: editingId ? "PUT" : "POST",
+            body: JSON.stringify({ name })
+        });
+
+        resetIncomeCategoryForm();
+
+        showIncomeCategoryMessage(
+            editingId
+                ? "Income category updated successfully."
+                : "Income category added successfully."
+        );
+
+        // Refresh the income form, filter, category manager and history.
+        await loadCategories();
+        await loadManagedIncomeCategories();
+        await loadIncomes();
+    } catch (error) {
+        console.error("Income category save error:", error);
+        showIncomeCategoryMessage(error.message, "error");
+    } finally {
+        saveIncomeCategoryBtn.disabled = false;
+    }
+});
+
+async function deleteIncomeCategory(category) {
+    if (category.isDefault === true) {
+        showIncomeCategoryMessage(
+            "Default categories cannot be deleted.",
+            "error"
+        );
+        return;
+    }
+
+    const confirmed = confirm(
+        `Delete the category "${category.name}"? This cannot be undone.`
+    );
+
+    if (!confirmed) return;
+
+    try {
+        await incomeCategoryApiRequest(
+            `${BASE_URL}/income-categories/${category.id}`,
+            { method: "DELETE" }
+        );
+
+        resetIncomeCategoryForm();
+        showIncomeCategoryMessage("Income category deleted successfully.");
+
+        await loadCategories();
+        await loadManagedIncomeCategories();
+        await loadIncomes();
+    } catch (error) {
+        console.error("Income category deletion error:", error);
+        showIncomeCategoryMessage(error.message, "error");
+    }
+}

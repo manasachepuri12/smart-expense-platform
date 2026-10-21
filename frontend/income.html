@@ -1,8 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,10 +16,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="css/styles.css">
-
 </head>
 
 <body class="font-[Inter] bg-slate-100">
@@ -27,131 +27,130 @@
     <div class="flex min-h-screen">
 
         <!-- Sidebar -->
-
         <aside class="w-72 bg-[#001D39] text-white flex flex-col">
 
             <div class="p-8 border-b border-white/20">
-
                 <h1 class="text-3xl font-bold">
                     <i class="fa-solid fa-wallet mr-2"></i>
                     Smart Expense
                 </h1>
-
             </div>
 
             <nav class="flex-1 p-6">
-
                 <ul class="space-y-4">
 
                     <li>
-                        <a href="dashboard.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <a href="dashboard.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
                             <i class="fa-solid fa-house"></i>
                             Dashboard
                         </a>
                     </li>
 
                     <li>
-                        <a href="expenses.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <a href="expenses.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
                             <i class="fa-solid fa-receipt"></i>
                             Expenses
                         </a>
                     </li>
 
                     <li>
-                        <a href="income.html" class="flex items-center gap-3 bg-white/10 rounded-xl p-3">
+                        <a href="income.html"
+                            class="flex items-center gap-3 bg-white/10 rounded-xl p-3">
                             <i class="fa-solid fa-money-bill-trend-up"></i>
                             Income
                         </a>
                     </li>
 
                     <li>
-                        <a href="budget.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <a href="budget.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
                             <i class="fa-solid fa-piggy-bank"></i>
                             Budget
                         </a>
                     </li>
 
                     <li>
-                        <a href="analytics.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <a href="analytics.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
                             <i class="fa-solid fa-chart-line"></i>
                             Analytics
                         </a>
                     </li>
 
                     <li>
-                        <a href="reports.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <a href="reports.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
                             <i class="fa-solid fa-file-lines"></i>
                             Reports
                         </a>
                     </li>
+
                     <li>
-                        <a href="profile.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                        <a href="profile.html"
+                            class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
                             <i class="fa-solid fa-user"></i>
                             Profile
                         </a>
                     </li>
 
                     <li class="pt-8 border-t border-white/20 mt-8">
-                        <a href="#" onclick="logout()" class="flex items-center gap-3 p-3 hover:bg-red-500 rounded-xl">
+                        <a href="#" onclick="logout()"
+                            class="flex items-center gap-3 p-3 hover:bg-red-500 rounded-xl">
                             <i class="fa-solid fa-right-from-bracket"></i>
                             Logout
                         </a>
                     </li>
 
-
                 </ul>
-
             </nav>
 
         </aside>
 
         <!-- Main Content -->
-
-        <main class="flex-1">
+        <main class="flex-1 min-w-0">
 
             <!-- Header -->
-
-            <header class="bg-white shadow-sm px-10 py-5 flex justify-between items-center">
+            <header
+                class="bg-white shadow-sm px-10 py-5 flex justify-between items-center gap-5">
 
                 <div>
-
                     <h2 class="text-3xl font-bold text-slate-800">
-
                         Income
-
                     </h2>
 
                     <p class="text-slate-500">
-
                         Manage your income sources
-
                     </p>
-
                 </div>
 
-                <button id="addIncomeBtn" class="btn-primary px-6 py-3 rounded-xl">
+                <button id="addIncomeBtn"
+                    class="btn-primary px-6 py-3 rounded-xl whitespace-nowrap">
 
                     <i class="fa-solid fa-plus mr-2"></i>
-
                     Add Income
 
                 </button>
 
             </header>
 
-            <!-- Content -->
-
+            <!-- Page Content -->
             <section class="p-10">
 
-                <!-- Search & Filter -->
-
+                <!-- Search and Filter -->
                 <div class="card p-6 mb-8">
 
                     <div class="flex justify-between items-center flex-wrap gap-4">
 
-                        <input id="incomeSearch" type="text" placeholder="Search income..."
-                            class="w-full md:w-96 rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <select id="categoryFilter" class="rounded-xl border border-gray-300 px-4 py-3">
+                        <input id="incomeSearch"
+                            type="text"
+                            placeholder="Search income..."
+                            class="w-full md:w-96 rounded-xl border border-gray-300 px-4 py-3
+                                   focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                        <select id="categoryFilter"
+                            class="rounded-xl border border-gray-300 px-4 py-3">
                             <option value="">All Categories</option>
                         </select>
 
@@ -159,20 +158,124 @@
 
                 </div>
 
-                <!-- Income Table -->
+                <!-- Manage Categories Card -->
+                <div class="card p-6 mb-8">
 
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">
+                        Manage Categories
+                    </h3>
+
+                    <p class="text-slate-500 mb-4">
+                        Add and rename your custom income categories.
+                    </p>
+
+                    <button id="manageCategoriesBtn"
+                        type="button"
+                        class="btn-primary w-full px-6 py-3 rounded-xl">
+
+                        <i class="fa-solid fa-tags mr-2"></i>
+                        Manage Categories
+
+                    </button>
+
+                </div>
+
+                <!-- Income Category Manager -->
+                <!-- Hidden until Manage Categories is clicked -->
+                <div id="categoryManager" class="card p-8 mb-8 hidden">
+
+                    <div class="flex justify-between items-center flex-wrap gap-4 mb-6">
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">
+                                Income Categories
+                            </h3>
+
+                            <p class="text-slate-500 mt-1">
+                                Manage your default and custom income categories.
+                            </p>
+                        </div>
+
+                        <button id="closeCategoryManager"
+                            type="button"
+                            class="px-4 py-2 rounded-xl border border-gray-300 hover:bg-gray-100">
+
+                            Close
+
+                        </button>
+
+                    </div>
+
+                    <!-- Add or Edit Category Form -->
+                    <form id="incomeCategoryForm"
+                        class="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_auto] gap-3 mb-4">
+
+                        <input id="customIncomeCategoryName"
+                            type="text"
+                            maxlength="100"
+                            required
+                            placeholder="Enter category name"
+                            class="w-full min-w-0 rounded-xl border border-gray-300 px-4 py-3
+                                   focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                        <button id="saveIncomeCategoryBtn"
+                            type="submit"
+                            class="btn-primary px-6 py-3 rounded-xl whitespace-nowrap">
+
+                            <i class="fa-solid fa-plus mr-2"></i>
+                            Add Category
+
+                        </button>
+
+                        <button id="cancelIncomeCategoryEditBtn"
+                            type="button"
+                            class="hidden px-5 py-3 rounded-xl border border-gray-300 hover:bg-gray-100">
+
+                            Cancel Edit
+
+                        </button>
+
+                    </form>
+
+                    <!-- Category Messages -->
+                    <p id="incomeCategoryMessage"
+                        class="text-sm mb-4"
+                        role="status"
+                        aria-live="polite"></p>
+
+                    <!-- Category Table -->
+                    <div class="overflow-x-auto">
+
+                        <table class="w-full">
+
+                            <thead>
+                                <tr class="border-b text-left">
+                                    <th class="py-4">Category Name</th>
+                                    <th>Type</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="incomeCategoryTableBody">
+                                <!-- Categories loaded by income.js -->
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <!-- Income History -->
                 <div class="card p-8">
 
                     <h3 class="text-2xl font-bold mb-6">
-
                         Income History
-
                     </h3>
 
                     <div class="overflow-x-auto">
 
                         <table class="w-full">
-
 
                             <thead>
                                 <tr class="border-b text-left">
@@ -185,7 +288,7 @@
                             </thead>
 
                             <tbody id="incomeTableBody">
-                                <!-- Income records will be loaded dynamically using income.js -->
+                                <!-- Income records loaded dynamically using income.js -->
                             </tbody>
 
                         </table>
@@ -199,9 +302,12 @@
         </main>
 
     </div>
+
+    <!-- JavaScript -->
     <script src="js/api.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/income.js"></script>
+
 </body>
 
 </html>

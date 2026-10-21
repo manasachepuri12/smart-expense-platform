@@ -22,4 +22,5 @@ public class IncomeCategoryResponseDTO {
             example = "Salary"
     )
     private String name;
+    private Boolean isDefault;
 }
