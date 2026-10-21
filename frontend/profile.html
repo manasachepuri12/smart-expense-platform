@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,348 +12,330 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="css/styles.css">
-
 </head>
 
 <body class="font-[Inter] bg-slate-100">
 
-<div class="flex min-h-screen">
-
-    <!-- Sidebar -->
-
-    <aside class="w-72 bg-[#001D39] text-white flex flex-col">
-
-        <div class="p-8 border-b border-white/20">
-
-            <h1 class="text-3xl font-bold">
-
-                <i class="fa-solid fa-wallet mr-2"></i>
-
-                Smart Expense
-
-            </h1>
-
-        </div>
-
-        <nav class="flex-1 p-6">
-
-            <ul class="space-y-4">
-
-                <li>
-                    <a href="dashboard.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-                        <i class="fa-solid fa-house"></i> Dashboard
-                    </a>
-                </li>
-
-                <li>
-                    <a href="expenses.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-                        <i class="fa-solid fa-receipt"></i> Expenses
-                    </a>
-                </li>
-
-                <li>
-                    <a href="income.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-                        <i class="fa-solid fa-money-bill-trend-up"></i> Income
-                    </a>
-                </li>
-
-                <li>
-                    <a href="budget.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-                        <i class="fa-solid fa-piggy-bank"></i> Budget
-                    </a>
-                </li>
-
-                <li>
-                    <a href="analytics.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-                        <i class="fa-solid fa-chart-line"></i> Analytics
-                    </a>
-                </li>
-
-                <li>
-                    <a href="reports.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-                        <i class="fa-solid fa-file-lines"></i> Reports
-                    </a>
-                </li>
-
-                <li>
-            <a href="profile.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
-                <i class="fa-solid fa-user"></i>
-                Profile
-            </a>
-        </li>
-
-        <li class="pt-8 border-t border-white/20 mt-8">
-            <a href="#" onclick="logout()"
-   class="flex items-center gap-3 p-3 hover:bg-red-500 rounded-xl">
-    <i class="fa-solid fa-right-from-bracket"></i>
-    Logout
-</a>
-        </li>
-
-            </ul>
-
-        </nav>
-
-    </aside>
-
-    <!-- Main Content -->
-
-    <main class="flex-1">
-
-        <!-- Header -->
-
-        <header class="bg-white shadow-sm px-10 py-5">
-
-            <h2 class="text-3xl font-bold text-slate-800">
-
-                My Profile
-
-            </h2>
-
-            <p class="text-slate-500 mt-1">
-
-                Manage your personal information and account settings
-
-            </p>
-
-        </header>
-
-        <section class="p-10">
-
-            <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-10">
-
-                <!-- Profile Photo -->
-
-                <div class="flex flex-col items-center">
-
-    <img
-        id="profileImage"
-        src="https://placehold.co/150x150/E5E7EB/374151?text=M"
-        alt="Profile Picture"
-        class="w-32 h-32 rounded-full object-cover border-4 border-[#0A4174] shadow-lg">
-
-    <input
-        type="file"
-        id="imageInput"
-        accept="image/*"
-        class="hidden">
-
-    <button
-        type="button"
-        onclick="document.getElementById('imageInput').click()"
-        class="mt-5 px-5 py-2 rounded-xl bg-[#0A4174] text-white hover:bg-[#001D39] transition">
-
-        <i class="fa-solid fa-camera mr-2"></i>
-
-        Change Photo
-
-    </button>
-
-</div>
-
-                <!-- Form -->
-
-                <div class="grid md:grid-cols-2 gap-8 mt-10">
-
-                    <div>
-
-                        <label class="block mb-2 font-semibold">
-
-                            Full Name
-
-                        </label>
-
-                        <input
-                            type="text"
-                            value="Manasa"
-                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                    </div>
-
-                    <div>
-
-                        <label class="block mb-2 font-semibold">
-
-                            Email
-
-                        </label>
-
-                        <input
-                            type="email"
-                            value="manasa@email.com"
-                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                    </div>
-
-                    <div>
-
-                        <label class="block mb-2 font-semibold">
-
-                            Phone Number
-
-                        </label>
-
-                        <input
-                            type="text"
-                            placeholder="+91 XXXXX XXXXX"
-                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                    </div>
-
-                    <div>
-
-                        <label class="block mb-2 font-semibold">
-
-                            Monthly Income
-
-                        </label>
-
-                        <input
-                            type="number"
-                            placeholder="50000"
-                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                    </div>
-
-                    <div>
-
-                        <label class="block mb-2 font-semibold">
-
-                            Currency
-
-                        </label>
-
-                        <select
-                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                            <option>INR (₹)</option>
-                            <option>USD ($)</option>
-                            <option>EUR (€)</option>
-
-                        </select>
-
-                    </div>
-
-                    <div>
-
-                        <label class="block mb-2 font-semibold">
-
-                            Monthly Budget Goal
-
-                        </label>
-
-                        <input
-                            type="number"
-                            placeholder="30000"
-                            class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                    </div>
-
-                </div>
-
-                <!-- Security -->
-
-                <div class="mt-10">
-
-                    <h3 class="text-xl font-bold mb-5">
-
-                        Security
-
-                    </h3>
-
-                    <button
-                        class="px-6 py-3 rounded-xl bg-orange-500 text-white hover:bg-orange-600 transition">
-
-                        <i class="fa-solid fa-lock mr-2"></i>
-
-                        Change Password
-
-                    </button>
-
-                </div>
-
-                <!-- Preferences -->
-
-                <div class="mt-10">
-
-                    <h3 class="text-xl font-bold mb-5">
-
-                        Preferences
-
-                    </h3>
-
-                    <div class="space-y-4">
-
-                        <label class="flex items-center justify-between">
-
-                            <span>Email Notifications</span>
-
-                            <input type="checkbox" checked class="w-5 h-5">
-
-                        </label>
-
-                        <label class="flex items-center justify-between">
-
-                            <span>Expense Alerts</span>
-
-                            <input type="checkbox" checked class="w-5 h-5">
-
-                        </label>
-
-                    </div>
-
-                </div>
-
-                <!-- Buttons -->
-
-                <div class="flex gap-4 mt-12">
-
-                    <button
-                        class="px-8 py-3 rounded-xl bg-[#0A4174] text-white hover:bg-[#001D39] transition">
-
-                        Save Changes
-
-                    </button>
-
-                    <button
-                        class="px-8 py-3 rounded-xl border border-gray-400 hover:bg-gray-100 transition">
-
-                        Cancel
-
-                    </button>
-
-                </div>
-
+    <div class="flex min-h-screen">
+
+        <!-- Sidebar -->
+        <aside class="w-72 bg-[#001D39] text-white flex flex-col">
+
+            <div class="p-8 border-b border-white/20">
+                <h1 class="text-3xl font-bold">
+                    <i class="fa-solid fa-wallet mr-2"></i>
+                    Smart Expense
+                </h1>
             </div>
 
-        </section>
+            <nav class="flex-1 p-6">
+                <ul class="space-y-4">
 
-    </main>
+                    <li>
+                        <a href="dashboard.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-house"></i>
+                            Dashboard
+                        </a>
+                    </li>
 
-</div>
-<script>
-const imageInput = document.getElementById("imageInput");
-const profileImage = document.getElementById("profileImage");
+                    <li>
+                        <a href="expenses.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-receipt"></i>
+                            Expenses
+                        </a>
+                    </li>
 
-imageInput.addEventListener("change", function () {
+                    <li>
+                        <a href="income.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-money-bill-trend-up"></i>
+                            Income
+                        </a>
+                    </li>
 
-    const file = this.files[0];
+                    <li>
+                        <a href="budget.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-piggy-bank"></i>
+                            Budget
+                        </a>
+                    </li>
 
-    if (file) {
-        profileImage.src = URL.createObjectURL(file);
-    }
+                    <li>
+                        <a href="analytics.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-chart-line"></i>
+                            Analytics
+                        </a>
+                    </li>
 
-});
-</script>
-<script src="js/api.js"></script>
-<script src="js/auth.js"></script>
-<script src="js/dashboard.js"></script>
+                    <li>
+                        <a href="reports.html" class="flex items-center gap-3 p-3 hover:bg-white/10 rounded-xl">
+                            <i class="fa-solid fa-file-lines"></i>
+                            Reports
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="profile.html" class="flex items-center gap-3 bg-white/10 rounded-xl p-3">
+                            <i class="fa-solid fa-user"></i>
+                            Profile
+                        </a>
+                    </li>
+
+                    <li class="pt-8 border-t border-white/20 mt-8">
+                        <a href="#" onclick="logout(); return false;"
+                            class="flex items-center gap-3 p-3 hover:bg-red-500 rounded-xl">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Logout
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 min-w-0">
+
+            <!-- Header -->
+            <header class="bg-white shadow-sm px-10 py-5">
+                <h2 class="text-3xl font-bold text-slate-800">
+                    My Profile
+                </h2>
+
+                <p class="text-slate-500 mt-1">
+                    Manage your personal information and account settings
+                </p>
+            </header>
+
+            <section class="p-6 md:p-10">
+
+                <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-6 md:p-10">
+
+                    <!-- Status Message -->
+                    <div id="profileMessage" role="status" aria-live="polite"
+                        class="hidden mb-6 rounded-xl p-4 text-sm">
+                    </div>
+
+                    <!-- Profile Photo -->
+                    <div class="flex flex-col items-center">
+
+                        <img id="profileImage" src="https://placehold.co/150x150/E5E7EB/374151?text=Profile"
+                            alt="Profile Picture"
+                            class="w-32 h-32 rounded-full object-cover border-4 border-[#0A4174] shadow-lg">
+
+                        <input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp" class="hidden">
+
+                        <button type="button" id="changePhotoBtn"
+                            class="mt-5 px-5 py-2 rounded-xl bg-[#0A4174] text-white hover:bg-[#001D39] transition">
+
+                            <i class="fa-solid fa-camera mr-2"></i>
+                            Change Photo
+                        </button>
+
+                        <p class="text-sm text-slate-500 mt-2">
+                            PNG, JPG or WebP image
+                        </p>
+                    </div>
+
+                    <!-- Personal Information -->
+                    <div class="mt-10">
+
+                        <h3 class="text-xl font-bold mb-5">
+                            Personal Information
+                        </h3>
+
+                        <div class="grid md:grid-cols-2 gap-8">
+
+                            <div>
+                                <label for="fullName" class="block mb-2 font-semibold">
+                                    Full Name
+                                </label>
+
+                                <input type="text" id="fullName" name="fullName" autocomplete="name" maxlength="100"
+                                    placeholder="Enter your full name"
+                                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+
+                            <div>
+                                <label for="email" class="block mb-2 font-semibold">
+                                    Email
+                                </label>
+
+                                <input type="email" id="email" name="email" autocomplete="email" maxlength="150"
+                                    placeholder="Enter your email"
+                                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+
+                            <div>
+                                <label for="phoneNumber" class="block mb-2 font-semibold">
+                                    Phone Number
+                                </label>
+
+                                <input type="tel" id="phoneNumber" name="phoneNumber" autocomplete="tel" maxlength="20"
+                                    placeholder="+91 XXXXX XXXXX"
+                                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+
+                            <div>
+                                <label for="monthlyIncome" class="block mb-2 font-semibold">
+                                    Monthly Income
+                                </label>
+
+                                <input type="number" id="monthlyIncome" name="monthlyIncome" min="0" step="0.01"
+                                    placeholder="Enter monthly income"
+                                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+
+                            <div>
+                                <label for="currency" class="block mb-2 font-semibold">
+                                    Currency
+                                </label>
+
+                                <select id="currency" name="currency"
+                                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                                    <option value="INR">INR (₹)</option>
+                                    <option value="USD">USD ($)</option>
+                                    <option value="EUR">EUR (€)</option>
+
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="monthlyBudgetGoal" class="block mb-2 font-semibold">
+                                    Monthly Budget Goal
+                                </label>
+
+                                <input type="number" id="monthlyBudgetGoal" name="monthlyBudgetGoal" min="0" step="0.01"
+                                    placeholder="Enter monthly budget goal"
+                                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Security -->
+                    <div class="mt-10">
+
+                        <h3 class="text-xl font-bold mb-5">
+                            Security
+                        </h3>
+
+                        <button type="button" id="changePasswordBtn"
+                            class="px-6 py-3 rounded-xl bg-orange-500 text-white hover:bg-orange-600 transition">
+
+                            <i class="fa-solid fa-lock mr-2"></i>
+                            Change Password
+                        </button>
+
+                        <div id="passwordSection" class="hidden mt-6 rounded-xl border p-5">
+                            <h3 class="text-lg font-semibold mb-4">Change Password</h3>
+
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="currentPassword" class="block text-sm font-medium mb-1">
+                                        Current Password
+                                    </label>
+                                    <input type="password" id="currentPassword" autocomplete="current-password"
+                                        class="w-full rounded-lg border p-3" required>
+                                </div>
+
+                                <div>
+                                    <label for="newPassword" class="block text-sm font-medium mb-1">
+                                        New Password
+                                    </label>
+                                    <input type="password" id="newPassword" autocomplete="new-password" minlength="6"
+                                        maxlength="20" class="w-full rounded-lg border p-3" required>
+                                </div>
+
+                                <div>
+                                    <label for="confirmPassword" class="block text-sm font-medium mb-1">
+                                        Confirm New Password
+                                    </label>
+                                    <input type="password" id="confirmPassword" autocomplete="new-password"
+                                        minlength="6" maxlength="20" class="w-full rounded-lg border p-3" required>
+                                </div>
+
+                                <div class="flex flex-wrap gap-3">
+                                    <button type="button" id="savePasswordBtn" class="rounded-lg bg-[#0A4174] px-5 py-2 text-white
+           hover:bg-[#001D39] active:scale-95
+           transition duration-150 cursor-pointer">
+                                        Update Password
+                                    </button>
+                                    <button type="button" id="cancelPasswordBtn" class="rounded-lg border px-5 py-2">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-slate-500 mt-2">
+                            Your current password is required to securely update your password.
+                        </p>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="mt-10">
+
+                        <h3 class="text-xl font-bold mb-5">
+                            Preferences
+                        </h3>
+
+                        <div class="space-y-4">
+
+                            <label for="emailNotifications"
+                                class="flex items-center justify-between gap-4 cursor-pointer">
+
+                                <span>Email Notifications</span>
+
+                                <input type="checkbox" id="emailNotifications" name="emailNotifications" checked
+                                    class="w-5 h-5 accent-[#0A4174]">
+                            </label>
+
+                            <label for="expenseAlerts" class="flex items-center justify-between gap-4 cursor-pointer">
+
+                                <span>Expense Alerts</span>
+
+                                <input type="checkbox" id="expenseAlerts" name="expenseAlerts" checked
+                                    class="w-5 h-5 accent-[#0A4174]">
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap gap-4 mt-12">
+
+                        <button type="button" id="saveProfileBtn"
+                            class="px-8 py-3 rounded-xl bg-[#0A4174] text-white hover:bg-[#001D39] transition">
+
+                            <i class="fa-solid fa-floppy-disk mr-2"></i>
+                            Save Changes
+                        </button>
+
+                        <button type="button" id="cancelProfileBtn"
+                            class="px-8 py-3 rounded-xl border border-gray-400 hover:bg-gray-100 transition">
+
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Shared scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+
 </body>
 
 </html>
